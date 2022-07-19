@@ -1,6 +1,4 @@
-# Flask Project Template
-
-This is a Flask project template.
+# Proyecto ciclo 3, grupo 5, NRC: 1873
 
 Pasos para correr el proyecto:
 
