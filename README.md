@@ -8,11 +8,11 @@ Pasos para correr el proyecto:
 
 2- activarlo:
 
-2.1 - cd Nombre-entorno-virtual
+cd Nombre-entorno-virtual
 
-2.2 - cd Scripts
+cd Scripts
 
-2.3 - activate
+activate
 
 3- instalar flask: pip install flask
 
