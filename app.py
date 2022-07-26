@@ -12,6 +12,10 @@ def index():
 def register():
     return render_template('Registrarse.html')
 
+@app.route('/inicio')
+def iniciar():
+    return render_template('inicio.html')
+
 if __name__ == "__main__":
     app.run()
 
