@@ -157,8 +157,11 @@ body {
 }
 
 .principal img{
-float: left;
-  height: 50px;
+  float: left;
+  height: 40px;
+  width: 110px;
+  padding-top: 15px;
+  padding-left: 20px;
 }
 
 .principal button{
@@ -166,10 +169,13 @@ float: left;
   border-radius: 12px;
   background-color: transparent;
   outline: none;
-  height: 60px;
+  height: 90px;
   font-size: 20px;
-  margin-left: 60px;
+  padding-top: 0px;
+  margin-left: 40px;
   color: #fff;
+  transition-duration: 0.4s;
+
 }
 
 #inicio{
@@ -177,23 +183,22 @@ float: left;
 }
 
 .principal button:hover {
-  color: rgb(107, 105, 105);
+  color: rgb(15, 38, 56);
+  background-color: rgb(149, 175, 247); /* Green */
 }
 
 #español{
   height: 30px;
   width: 140px;
-  background-color: grey;
   margin-left: 200px;
-  margin-top: 15px;
+  margin-top: 20px;
   font-size: 20px;
   padding-left: 0%;
-  
-
+  padding-top: 0px;
 }
 
 #texto{
-  width: 80px;
+  width: 100px;
   background-color: transparent;
   float: right;
   font-size: 20px;
@@ -216,16 +221,15 @@ float: left;
 
 .contenerdor{
   padding: 0;
-width: 100%;
-height: 100%;
-background-color: #000;
-
+  width: 100%;
+  height: 90%;
+  background-color: rgb(15, 38, 56);
 }
 
 .slider{
   padding: 0;
-  width: 90%;
-  height: 95%;
+  width: 100%;
+  height: 100%;
   margin: auto;
   overflow: hidden;
 }
@@ -234,7 +238,6 @@ background-color: #000;
   display: flex;
   padding: 0;
   width: 400%;
-
   animation: cambio 20s infinite;
   animation-direction: alternate;
 } 
@@ -247,6 +250,61 @@ background-color: #000;
 .slider img{
   width: 100%;
 }
+
+.contenedor-cuerpo{
+  width: 100%;
+  height: 70%;
+  background-color: whitesmoke;
+}
+
+.texto{
+  padding-top: 200px;
+  font-size: 150px; 
+  position: absolute; 
+  color: whitesmoke;
+  padding-left: 100px;
+  font-style: italic;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-shadow: black 0.2em 0.2em 0.2em;
+  
+}
+
+.texto-sec{
+  padding-top: 350px;
+  font-size: 70px; 
+  position: absolute; 
+  color: whitesmoke;
+  padding-left: 700px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: italic;
+  text-shadow: black 0.2em 0.2em 0.2em;;
+}
+
+.Titulo-1{
+  padding-top: 20px;
+  padding-left: 1080px;
+  font-size: 70px; 
+  position: absolute; 
+  color: black;
+  font-family:Arial, Helvetica, sans-serif;
+  text-shadow: black 0.0em 0.0em 0.1em;
+  
+}
+
+.contenedor-cuerpo img{
+  border: 15px solid #ddd;
+  border-radius: 10px;
+  width: 400px;
+  height: 302px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.contenedor-cuerpo img:hover {
+  box-shadow: 0 0 5px 1px rgba(0, 140, 186, 0.5);
+  
+}
+
 
 @keyframes cambio{
 0% {margin-left: 0;}
