@@ -117,7 +117,7 @@ body {
     color: #fff;
     font-size: 16px;
   }
-  
+ 
   .login-register input[type="submit"]:hover {
     cursor: pointer;
     background: #07b0ff;
@@ -146,5 +146,119 @@ body {
   }
 
 
+.principal{
+  width: 100%;
+  height: 60px;
+  padding: 1px;
+  background: rgb(15, 38, 56);
+  margin-top: 0px;
+  box-sizing: border-box;
+
+}
+
+.principal img{
+float: left;
+  height: 50px;
+}
+
+.principal button{
+  border: 0px;
+  border-radius: 12px;
+  background-color: transparent;
+  outline: none;
+  height: 60px;
+  font-size: 20px;
+  margin-left: 60px;
+  color: #fff;
+}
+
+#inicio{
+  margin-left: 200px;
+}
+
+.principal button:hover {
+  color: rgb(107, 105, 105);
+}
+
+#español{
+  height: 30px;
+  width: 140px;
+  background-color: grey;
+  margin-left: 200px;
+  margin-top: 15px;
+  font-size: 20px;
+  padding-left: 0%;
+  
+
+}
+
+#texto{
+  width: 80px;
+  background-color: transparent;
+  float: right;
+  font-size: 20px;
+  color: #fff;
+  border: none;
+  
+}
+
+#ingles{
+  height: 30px;
+  width: 140px;
+  background-color: grey;
+  margin-left: 0px;
+  margin-top: 15px;
+  font-size: 20px;
+  padding-left: 0%;
+
+}
 
 
+.contenerdor{
+  padding: 0;
+width: 100%;
+height: 100%;
+background-color: #000;
+
+}
+
+.slider{
+  padding: 0;
+  width: 90%;
+  height: 95%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slider ul{
+  display: flex;
+  padding: 0;
+  width: 400%;
+
+  animation: cambio 20s infinite;
+  animation-direction: alternate;
+} 
+
+.slider li{
+  width: 100%;
+  list-style: none;
+}
+
+.slider img{
+  width: 100%;
+}
+
+@keyframes cambio{
+0% {margin-left: 0;}
+20% {margin-left: 0;}
+
+25% {margin-left: -100%;}
+45% {margin-left: -100%;}
+
+50% {margin-left: -200%;}
+70% {margin-left: -200%;}
+
+75% {margin-left: -300%;}
+100% {margin-left: -300%;}
+
+}
