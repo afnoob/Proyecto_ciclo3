@@ -1,0 +1,123 @@
+* {box-sizing: border-box;}
+nav {
+   overflow: hidden;
+   background-color: rgb(15, 38, 56);
+   padding: 0px;
+}
+
+.links {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-weight: bold;
+   float: left;
+   color:white;
+   text-align: center;
+   padding: 15px;
+   text-decoration: none;
+   font-size: 18px;
+   line-height: 25px;
+   border-radius: 4px;
+}
+
+nav .links:hover {
+   background-color: dodgerblue;
+   color: white;
+   text-decoration: none;
+}
+nav .selected {
+   background-color: dodgerblue;
+   color: white;
+}
+.rightSection {
+   float: right;
+   padding-top: 10px;
+}
+
+.rightSection img{
+    height: 100px;
+    width: 100px;
+}
+
+nav .img{
+  height: 100px;
+  width: 100px;
+}
+.rightSection button{
+  background: transparent;
+  border: none;
+}
+
+.logo img{
+  height: 60px;
+  width: 120px;
+  padding-top: 15px;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 500px) {
+
+    .logo img{
+        width: 40%;
+        float: none;
+        display: block;
+    }
+    .contenerdor {
+        width: 100%;
+        float: none;
+    }
+  
+    .texto{
+        padding-top: 33vw;
+        padding-left: 65vw;
+        float: none;
+        -webkit-text-stroke: 0.5px black;
+        
+    }
+  
+    .texto-sec{
+      padding-top: 39vw;
+      padding-left: 87vw;
+      float: none;
+      -webkit-text-stroke: 0.5px black;
+    }
+  
+    .texto-ter{
+      float: none;
+      -webkit-text-stroke: 0.5px black;
+      padding-top: 20vw;
+      padding-left: 30vw;
+    }
+  
+  }
+  
+  
+  
+  @media screen and (max-width: 500px) {
+     nav .links {
+        float: none;
+        display: block;
+        text-align: left;
+     }
+     .rightSection {
+        width: 100%;
+        float: none;
+     }
+  
+     iframe{
+      width: 25vw;
+      height: 30vw;
+     }
+  }
+  
+  @media screen and (max-width: 200px) {
+
+     nav .links {
+        float: none;
+        display: block;
+        text-align: left;
+     }
+     .rightSection {
+        width: 100%;
+        float: none;
+     }
+  
+  }
