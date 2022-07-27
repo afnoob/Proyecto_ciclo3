@@ -249,13 +249,13 @@ body {
 
 .contenedor-cuerpo{
   width: 100%;
-  height: 100%;
+  height: 60vw;
   background-color: whitesmoke;
   overflow:hidden;
 }
 
 .texto{
-  padding-top: 37vw;
+  padding-top: 33vw;
   padding-left: 65vw;
   font-size: 5vw; 
   position: absolute; 
@@ -263,7 +263,7 @@ body {
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-style: italic;
   text-shadow: black 0.1em 0.1em 0.2em;
-  -webkit-text-stroke: 2px black;
+  -webkit-text-stroke: 1px black;
   overflow: hidden;
   float: right;
   display: flex;
@@ -272,7 +272,7 @@ body {
 }
 
 .texto-sec{
-  padding-top: 42vw;
+  padding-top: 39vw;
   padding-left: 87vw;
   font-size: 2vw; 
   position: absolute; 
@@ -294,16 +294,17 @@ body {
   font-style: italic;
   text-shadow: black 0.2em 0.2em 0.2em;
   display: block;
-  -webkit-text-stroke: 1px black;
+  -webkit-text-stroke: 0.5px black;
 }
 
 .Titulo-1{
   padding-top: 2vw;
   padding-left: 40vw;
-  font-size: 40px; 
+  font-size: 2vw; 
   position: absolute; 
   color: rgb(15, 38, 56);
   font-family:Arial, Helvetica, sans-serif;
+  display: block;
 }
 
 
@@ -380,6 +381,10 @@ div.contenedor {
 
 
 @media screen and (max-width: 500px) {
+  .contenedor-cuerpo{
+    
+    height: 500vw;
+  }
    nav .links {
       float: none;
       display: block;
@@ -407,7 +412,35 @@ div.contenedor {
 
 }
 
+.card .thumb {
+  padding-bottom: 60%;
+  background-size: cover;
+  background-position: center center;
+  height: 25vw;
+  width: 25vw;
+  padding-top: 50%;
+}
+
 @media screen and (max-width: 500px) {
+  .band {
+    width: 90%;
+    max-width: 1240px;
+    margin-left: 0%;
+    display: grid;
+    padding-top: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+  }
+  .card {
+    display: block;
+    height: 52vw;
+    width: 25vw;
+    position: relative;
+    top: 0;
+    transition: all .1s ease-in;
+  }
+
   .logo img{
       width: 40%;
       float: none;
@@ -419,15 +452,15 @@ div.contenedor {
   }
 
   .texto{
-      padding-top: 37vw;
+      padding-top: 33vw;
       padding-left: 65vw;
       float: none;
-      -webkit-text-stroke: 1px black;
+      -webkit-text-stroke: 0.5px black;
       
   }
 
   .texto-sec{
-    padding-top: 42vw;
+    padding-top: 39vw;
     padding-left: 87vw;
     float: none;
     -webkit-text-stroke: 0.5px black;
@@ -439,6 +472,25 @@ div.contenedor {
     padding-top: 20vw;
     padding-left: 30vw;
   }
+
+  .card .thumb {
+    height: 25vw;
+    width: 25vw;
+    
+
+  }
+
+  .Titulo-1{
+    padding-top: 2vw;
+    padding-left: 40vw;
+    font-size: 2vw; 
+    position: absolute; 
+    color: rgb(15, 38, 56);
+    font-family:Arial, Helvetica, sans-serif;
+    display: block;
+  }
+
+
 }
 
 html {
@@ -459,16 +511,14 @@ html {
   grid-gap: 20px;
 }
 
-@media only screen and (min-width: 500px) {
-  .band {
-    grid-template-columns: 1fr 1fr;
-  }  
-}
+
 
 @media only screen and (min-width: 850px) {
   .band {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+
+  
 }
 
 
@@ -479,7 +529,8 @@ html {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  height: 52vw;
+  width: 25vw;
   position: relative;
   top: 0;
   transition: all .1s ease-in;
@@ -494,31 +545,186 @@ html {
   padding: 50px;
 }
 
-.card .thumb {
-  padding-bottom: 60%;
-  background-size: cover;
-  background-position: center center;
-  height: 25vw;
-  width: 25vw;
-  padding-top: 50%;
-}
+
+
+
 
 /* typography */
 .card h1 {
-  font-size: 20px;
+  font-size: 1vw;
   margin: 0;
   color: #333;
+  text-align: center;
 }
 
 .card p { 
   line-height: 1.4;
+  font-size: 0.8vw;
 }
 
 .card span {
-  font-size: 12px;
+  font-size: 0.8vw;
   font-weight: bold;
   color: #999;
   text-transform: uppercase;
   letter-spacing: .05em;
   margin: 2em 0 0 0;
 }
+
+.footer-top-layout {
+  background: rgb(15, 38, 56);
+  color: #ffffff;
+  padding: 40px 0;
+}
+.OurBlog {
+  margin-bottom: 32px;
+  text-align: center;
+}
+.footer-top-layout h4 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 21px;
+}
+.OurBlog > p {
+  color: #888888;
+}
+.post-blog-date::after {
+  background: #ffffff none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 4px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  width: 50px;
+}
+.post-blog-date {
+  padding-bottom: 25px;
+  position: relative;
+}
+
+body {
+  color: #666666;
+  font-family: "Open Sans",sans-serif;
+  line-height: 24px;
+}
+
+.footer-top-layout [class*="col-sm-"]:first-child {
+  padding: 0;
+}
+.footer-top-layout [class*="col-sm-"] {
+  border-right: 2px solid #333333;
+  padding: 0 0 0 28px;
+  
+}
+.footer-top-layout {
+  color: #ffffff;
+}
+.footer-col-item {
+  min-height: 140px;
+}
+
+address {
+  color: #545454;
+}
+
+
+.footer-top-layout [class*="col-sm-"]:last-child {
+  border-right: medium none;
+} 
+.footer-top-layout {
+  color: #ffffff;
+}
+body {
+  color: #666666;
+  font-family: "Open Sans",sans-serif;
+
+}
+.footer-top-layout h4 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 21px;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  color: #333333;
+  font-family: "Roboto",sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-top: 0;
+}
+body {
+  color: #666666;
+  font-family: "Open Sans",sans-serif;
+  line-height: 24px;
+}
+.footer-col-item .item-contact a {
+  color: #545454;
+  display: inline-block;
+  margin-bottom: 7px;
+  width: 100%;
+}
+
+.footer-col-item .item-contact a .link-id {
+  color: #ffffff;
+  margin-left: 0;
+  margin-right: 6px;
+}
+.footer-col-item span {
+  margin-left: 7px;
+}
+.footer-col-item .item-contact a {
+  color: #545454;
+}
+
+.footer-top-layout h4 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 21px;
+}
+.signUpNewsletter {
+  position: relative;
+}
+.signUpNewsletter .gt-email {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: 1px solid #666666;
+  border-radius: 0;
+  color: #ffffff;
+  height: 52px;
+}
+.signUpNewsletter .btn-go {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border-color: #666666;
+  border-style: solid;
+  border-width: 0 0 0 1px;
+  bottom: 0;
+  color: #ffffff;
+  font-size: 16px;
+  position: absolute;
+  right: 0;
+  text-transform: uppercase;
+  top: 0;
+  width: 52px;
+}
+.footer-bottom-layout {
+  background: rgb(26, 57, 82);
+  padding: 20px 0;
+  text-align: center;
+  
+}
+
+.socialMedia-footer {
+  margin-bottom: 20px;
+}
+.socialMedia-footer > a {
+  display: inline-block;
+  margin: 0 8px;
+}
+.footer-bottom-layout {
+  text-align: center;
+}
+
+.copyright-tag{
+  color: white;
+}
+
