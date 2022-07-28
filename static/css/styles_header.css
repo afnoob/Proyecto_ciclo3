@@ -49,7 +49,8 @@ nav .img{
 .logo img{
   height: 60px;
   width: 120px;
-  padding-top: 15px;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
   padding-left: 20px;
 }
 
@@ -63,28 +64,6 @@ nav .img{
     .contenerdor {
         width: 100%;
         float: none;
-    }
-  
-    .texto{
-        padding-top: 33vw;
-        padding-left: 65vw;
-        float: none;
-        -webkit-text-stroke: 0.5px black;
-        
-    }
-  
-    .texto-sec{
-      padding-top: 39vw;
-      padding-left: 87vw;
-      float: none;
-      -webkit-text-stroke: 0.5px black;
-    }
-  
-    .texto-ter{
-      float: none;
-      -webkit-text-stroke: 0.5px black;
-      padding-top: 20vw;
-      padding-left: 30vw;
     }
   
   }
