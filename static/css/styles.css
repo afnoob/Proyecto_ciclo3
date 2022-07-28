@@ -736,15 +736,14 @@ background: #e6e0eb;
 
 .first-title-profile{
   text-align: center;
-  color: rgb(0, 0, 0);                          
+  color: #fff;                          
 
-  font-size: 2vw;
+  font-size: "500px";
 }
 
 .labels {
-  font-size: 1vw;
-  color: rgb(0, 0, 0);
-  padding-top: 1vw;
+  font-size: 20px;
+  color: #fff;
 }
 .vcenter {
   display: inline-block;
