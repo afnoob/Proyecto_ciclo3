@@ -28,6 +28,18 @@ def administradores():
 def habitaciones():
     return render_template('habitaciones.html')
 
+@app.route('/perfil')
+def perfil():
+    return render_template('Mi_perfil.html')
+
+@app.route('/lista-habitaciones')
+def lista():
+    return render_template('lista_habitaciones.html')
+
+@app.route('/lista-habitaciones/reserva')
+def reserva():
+    return render_template('reserva.html')
+
 if __name__ == "__main__":
     app.run()
 

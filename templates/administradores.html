@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Administradores</title>
 <link rel="stylesheet" href="../static/css/styles_header.css">
 <link rel="stylesheet" href="../static/css/styles.css">
@@ -14,34 +14,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-    
-</style>
-<script>
-$(document).ready(function(){
-	// Activate tooltip
-	$('[data-toggle="tooltip"]').tooltip();
-	
-	// Select/Deselect checkboxes
-	var checkbox = $('table tbody input[type="checkbox"]');
-	$("#selectAll").click(function(){
-		if(this.checked){
-			checkbox.each(function(){
-				this.checked = true;                        
-			});
-		} else{
-			checkbox.each(function(){
-				this.checked = false;                        
-			});
-		} 
-	});
-	checkbox.click(function(){
-		if(!this.checked){
-			$("#selectAll").prop("checked", false);
-		}
-	});
-});
-</script>
+<script src="../static/js/main.js"></script>
 </head>
 <body>
   <header>
@@ -52,13 +25,13 @@ $(document).ready(function(){
     </div>
     <div class="rightSection">
     <a class="links" href="/inicio">Inicio</a>
-    <a class="links" href="#">Habitaciones</a>
+    <a class="links" href="/lista-habitaciones">Habitaciones</a>
     <a class="links" href="#">Mis reservas</a>
     <a class="links" href="/habitaciones">Gestionar habitaciones</a>
     <a class="links" href="/usuarios">Gestionar usuarios</a>
     <a class="selected links" href="/administradores">Gestionar administradores</a>
     <a class="links" href="#footer-Section">Contacto</a>
-    <a class="links" href="#">Mi cuenta</a>
+    <a class="links" href="/perfil">Mi cuenta</a>
     </div>
   </nav>
   </header>
