@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Habitaciones</title>
+<title>Usuarios</title>
 <link rel="stylesheet" href="../static/css/styles_header.css">
 <link rel="stylesheet" href="../static/css/styles.css">
 <link rel="stylesheet" href="../static/css/style_crud.css">
@@ -54,8 +54,8 @@ $(document).ready(function(){
     <a class="links" href="/inicio">Inicio</a>
     <a class="links" href="#">Habitaciones</a>
     <a class="links" href="#">Mis reservas</a>
-    <a class="selected links" href="#">Gestionar habitaciones</a>
-    <a class="links" href="/usuarios">Gestionar usuarios</a>
+    <a class="links" href="/habitaciones">Gestionar habitaciones</a>
+    <a class="selected links" href="/usuarios">Gestionar usuarios</a>
     <a class="links" href="/administradores">Gestionar administradores</a>
     <a class="links" href="#footer-Section">Contacto</a>
     <a class="links" href="#">Mi cuenta</a>
@@ -68,10 +68,10 @@ $(document).ready(function(){
 				<div class="table-title">
 					<div class="row">
 						<div class="col-xs-6">
-							<h2>Gestionar <b>Habitaciones</b></h2>
+							<h2>Gestionar <b>Usuarios</b></h2>
 						</div>
 						<div class="col-xs-6">
-							<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir habitación</span></a>
+							<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir usuario</span></a>
 							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Eliminar</span></a>						
 						</div>
 					</div>
@@ -85,10 +85,12 @@ $(document).ready(function(){
 									<label for="selectAll"></label>
 								</span>
 							</th>
-							<th>Número</th>
-							<th>Disponibilidad</th>
-							<th>Precio</th>
-                            <th>Acciones</th>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Cédula</th>
+							<th>Teléfono</th>
+							<th>Correo electrónico</th>
+              <th>Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -99,9 +101,11 @@ $(document).ready(function(){
 									<label for="checkbox1"></label>
 								</span>
 							</td>
-							<td>302</td>
-							<td>True</td>
-							<td>400 USD</td>
+							<td>Nestor</td>
+							<td>Hernandez</td>
+							<td>12921218</td>
+							<td>3452332111</td>
+              <td>Nestor@gmail.com</td>
 							<td>
 								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
 								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
@@ -114,9 +118,11 @@ $(document).ready(function(){
 									<label for="checkbox2"></label>
 								</span>
 							</td>
-							<td>404</td>
-							<td>True</td>
-							<td>400 USD</td>
+							<td>Viviana</td>
+							<td>Zambrano</td>
+							<td>263711212</td>
+							<td>3133654123</td>
+              <td>vivianita2@outlook.com</td>
 							<td>
 								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
 								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
@@ -129,9 +135,11 @@ $(document).ready(function(){
 									<label for="checkbox3"></label>
 								</span>
 							</td>
-							<td>106</td>
-							<td>False</td>
-							<td>400 USD</td>
+							<td>Maria</td>
+							<td>Moreno</td>
+							<td>821712721</td>
+							<td>3176125215</td>
+              <td>mhgf@hotmail.com</td>
 							<td>
 								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
 								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
@@ -144,9 +152,11 @@ $(document).ready(function(){
 									<label for="checkbox4"></label>
 								</span>
 							</td>
-							<td>110</td>
-							<td>False</td>
-							<td>400 USD</td>
+							<td>Camilo</td>
+							<td>Jimenez</td>
+							<td>212132131</td>
+							<td>321213213</td>
+              <td>camilojimenez@gmail.com</td>
 							<td>
 								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
 								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
@@ -159,9 +169,11 @@ $(document).ready(function(){
 									<label for="checkbox5"></label>
 								</span>
 							</td>
-							<td>701</td>
-							<td>True</td>
-							<td>400 USD</td>
+							<td>Alexa</td>
+							<td>Morales</td>
+							<td>21212121</td>
+							<td>3212312212</td>
+              <td>aniko@gmail.com</td>
 							<td>
 								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
 								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
@@ -170,7 +182,7 @@ $(document).ready(function(){
 					</tbody>
 				</table>
 				<div class="clearfix">
-					<div class="hint-text">Visualizando<b> 5</b> de <b>25</b> registros</div>
+					<div class="hint-text">Visualizando<b>5</b> de <b>25</b> registros</div>
 					<ul class="pagination">
 						<li class="page-item disabled"><a href="#">Anterior</a></li>
 						<li class="page-item"><a href="#" class="page-link">1</a></li>
@@ -190,25 +202,41 @@ $(document).ready(function(){
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">						
-						<h4 class="modal-title">Añadir Habitación</h4>
+						<h4 class="modal-title">Añadir Usuario</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
 						<div class="form-group">
-							<label>Número</label>
+							<label>Nombre</label>
 							<input type="text" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Descripción</label>
-							<input type="text" class="form-control" required>
+							<label>Apellido</label>
+							<input type="email" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Disponibilidad</label>
-							<textarea class="form-control" required>True</textarea>
+							<label>Cédula</label>
+							<textarea class="form-control" required></textarea>
 						</div>
 						<div class="form-group">
-							<label>Precio</label>
+							<label>Edad</label>
 							<input type="text" class="form-control" required>
+						</div>
+            <div class="form-group">
+							<label>Ciudad</label>
+							<input type="text" class="form-control" required>
+						</div>
+            <div class="form-group">
+							<label>Teléfono</label>
+							<input type="text" class="form-control" required>
+						</div>
+            <div class="form-group">
+							<label>Correo electrónico</label>
+							<input type="text" class="form-control" required>
+						</div>
+            <div class="form-group">
+							<label>Contraseña</label>
+							<input type="password" class="form-control" required>
 						</div>								
 					</div>
 					<div class="modal-footer">
@@ -225,25 +253,41 @@ $(document).ready(function(){
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">						
-						<h4 class="modal-title">Editar Habitación</h4>
+						<h4 class="modal-title">Editar Usuario</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
 						<div class="form-group">
-							<label>Número</label>
+							<label>Nombres</label>
 							<input type="text" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Descipción</label>
+							<label>Apellidos</label>
 							<input type="email" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Disponibilidad</label>
+							<label>Cédula</label>
 							<textarea class="form-control" required></textarea>
 						</div>
 						<div class="form-group">
-							<label>Precio</label>
+							<label>Edad</label>
 							<input type="text" class="form-control" required>
+						</div>
+            <div class="form-group">
+							<label>Ciudad</label>
+							<input type="text" class="form-control" required>
+						</div>
+            <div class="form-group">
+							<label>Teléfono</label>
+							<input type="text" class="form-control" required>
+						</div>
+            <div class="form-group">
+							<label>Correo electrónico</label>
+							<input type="text" class="form-control" required>
+						</div>
+            <div class="form-group">
+							<label>Contraseña</label>
+							<input type="password" class="form-control" required>
 						</div>									
 					</div>
 					<div class="modal-footer">
@@ -260,11 +304,11 @@ $(document).ready(function(){
 			<div class="modal-content">
 				<form>
 					<div class="modal-header">						
-						<h4 class="modal-title">Eliminar Habitación</h4>
+						<h4 class="modal-title">Eliminar Usuario</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
-						<p>¿Está seguro que desea eliminarla?</p>
+						<p>¿Está seguro que desea eliminarlo?</p>
 						<p class="text-warning"><small>Esta acción no se puede deshacer</small></p>
 					</div>
 					<div class="modal-footer">

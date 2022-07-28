@@ -16,6 +16,18 @@ def register():
 def iniciar():
     return render_template('inicio.html')
 
+@app.route('/usuarios')
+def usuarios():
+    return render_template('usuarios.html')
+
+@app.route('/administradores')
+def administradores():
+    return render_template('administradores.html')
+
+@app.route('/habitaciones')
+def habitaciones():
+    return render_template('habitaciones.html')
+
 if __name__ == "__main__":
     app.run()
 
