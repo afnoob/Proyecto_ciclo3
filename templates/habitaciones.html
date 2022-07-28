@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Habitaciones</title>
-<link rel="stylesheet" href="../static/css/styles_header.css">
-<link rel="stylesheet" href="../static/css/styles.css">
-<link rel="stylesheet" href="../static/css/style_crud.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src=../static/js/main.js></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Habitaciones</title>
+	<link rel="stylesheet" href="../static/css/styles_header.css">
+	<link rel="stylesheet" href="../static/css/styles.css">
+	<link rel="stylesheet" href="../static/css/style_crud.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src=../static/js/main.js></script>
 </head>
+
 <body>
-  <header>
-  </div>
-  <nav>
-    <div class="logo">
-    <img src="../static/images/hote_rotana_logo3.png" align="left" alt="Rose Rayhaan"/>
-    </div>
-    <div class="rightSection">
-    <a class="links" href="/inicio">Inicio</a>
-    <a class="links" href="/lista-habitaciones">Habitaciones</a>
-    <a class="links" href="#">Mis reservas</a>
-    <a class="selected links" href="#">Gestionar habitaciones</a>
-    <a class="links" href="/usuarios">Gestionar usuarios</a>
-    <a class="links" href="/administradores">Gestionar administradores</a>
-    <a class="links" href="#footer-Section">Contacto</a>
-    <a class="links" href="/perfil">Mi cuenta</a>
-    </div>
-  </nav>
-  </header>
-    <div class="container">
+	<header>
+		</div>
+		<nav>
+			<div class="logo">
+				<img src="../static/images/hote_rotana_logo3.png" align="left" alt="Rose Rayhaan" />
+			</div>
+			<div class="rightSection">
+				<a class="links" href="/inicio">Inicio</a>
+				<a class="links" href="/lista-habitaciones">Habitaciones</a>
+				<a class="links" href="#">Mis reservas</a>
+				<a class="selected links" href="#">Gestionar habitaciones</a>
+				<a class="links" href="/usuarios">Gestionar usuarios</a>
+				<a class="links" href="/administradores">Gestionar administradores</a>
+				<a class="links" href="#footer-Section">Contacto</a>
+				<a class="links" href="/perfil">Mi cuenta</a>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
 		<div class="table-responsive">
 			<div class="table-wrapper">
 				<div class="table-title">
@@ -44,8 +46,10 @@
 							<h2>Gestionar <b>Habitaciones</b></h2>
 						</div>
 						<div class="col-xs-6">
-							<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir habitación</span></a>
-							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Eliminar</span></a>						
+							<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
+									class="material-icons">&#xE147;</i> <span>Añadir habitación</span></a>
+							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
+									class="material-icons">&#xE15C;</i> <span>Eliminar</span></a>
 						</div>
 					</div>
 				</div>
@@ -61,7 +65,7 @@
 							<th>Número</th>
 							<th>Disponibilidad</th>
 							<th>Precio</th>
-                            <th>Acciones</th>
+							<th>Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -76,8 +80,10 @@
 							<td>True</td>
 							<td>400 USD</td>
 							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
 							</td>
 						</tr>
 						<tr>
@@ -91,8 +97,10 @@
 							<td>True</td>
 							<td>400 USD</td>
 							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
 							</td>
 						</tr>
 						<tr>
@@ -106,8 +114,10 @@
 							<td>False</td>
 							<td>400 USD</td>
 							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
 							</td>
 						</tr>
 						<tr>
@@ -121,10 +131,12 @@
 							<td>False</td>
 							<td>400 USD</td>
 							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
 							</td>
-						</tr>					
+						</tr>
 						<tr>
 							<td>
 								<span class="custom-checkbox">
@@ -136,10 +148,12 @@
 							<td>True</td>
 							<td>400 USD</td>
 							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
 							</td>
-						</tr> 
+						</tr>
 					</tbody>
 				</table>
 				<div class="clearfix">
@@ -155,18 +169,17 @@
 					</ul>
 				</div>
 			</div>
-		</div>        
-    </div>
-	<!-- Edit Modal HTML -->
+		</div>
+	</div>
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Añadir Habitación</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">
 						<div class="form-group">
 							<label>Número</label>
 							<input type="text" class="form-control" required>
@@ -182,7 +195,7 @@
 						<div class="form-group">
 							<label>Precio</label>
 							<input type="text" class="form-control" required>
-						</div>								
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
@@ -192,16 +205,15 @@
 			</div>
 		</div>
 	</div>
-	<!-- Edit Modal HTML -->
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Editar Habitación</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">
 						<div class="form-group">
 							<label>Número</label>
 							<input type="text" class="form-control" required>
@@ -217,7 +229,7 @@
 						<div class="form-group">
 							<label>Precio</label>
 							<input type="text" class="form-control" required>
-						</div>									
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
@@ -227,16 +239,15 @@
 			</div>
 		</div>
 	</div>
-	<!-- Delete Modal HTML -->
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
-					<div class="modal-header">						
+					<div class="modal-header">
 						<h4 class="modal-title">Eliminar Habitación</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
-					<div class="modal-body">					
+					<div class="modal-body">
 						<p>¿Está seguro que desea eliminarla?</p>
 						<p class="text-warning"><small>Esta acción no se puede deshacer</small></p>
 					</div>
@@ -248,46 +259,53 @@
 			</div>
 		</div>
 	</div>
-  <footer id="footer-Section">
-    <div class="footer-top-layout">
-      <div class="container">
-        <div class="row">
-          <div class="OurBlog">
-            <h4>Rose Rayhaan</h4>
-            <p>Esta es la versión de nuestro sitio web destinada a personas que hablen español</p>
-          </div>
-          <div class=" col-lg-8 col-lg-offset-2">
-            <div class="col-sm-4">
-              <div class="footer-col-item">
-                <h4>Dirección</h4>
-                <address>
-                  heikh Zayed Rd - Trade Centre - DIFC<br>
-                  Dubai - Emiratos Árabes Unidos
-                </address>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="footer-col-item">
-                <h4>Contáctanos</h4>
-                <div class="item-contact"> <a href="tel:630-885-9200"><span class="link-id">P</span>:<span>68-70-334</span></a> <a href="tel:6-831-2012"><span class="link-id">F</span>:<span>630-839.2006</span></a> <a href="mailto:info@brandcatmedia.com"><span class="link-id">E</span>:<span>info@Rotana.com</span></a> </div>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="footer-col-item">
-                <h4>Suscríbete para obtener noticias</h4>
-                <form class="signUpNewsletter" action="" method="get">
-                  <input name="" class="gt-email form-control" placeholder="example@gmail.com" type="text">
-                  <input name="" class="btn-go" value="Ir" type="button">
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom-layout">
-      <div class="copyright-tag">© 2022 Rose Rayhaan by Rotana. Todos los derechos reservados</div>
-    </div>
-  </footer>
+	<footer id="footer-Section">
+		<div class="footer-top-layout">
+			<div class="container">
+				<div class="row">
+					<div class="OurBlog">
+						<h4>Rose Rayhaan</h4>
+						<p>Esta es la versión de nuestro sitio web destinada a personas que hablen español</p>
+					</div>
+					<div class=" col-lg-8 col-lg-offset-2">
+						<div class="col-sm-4">
+							<div class="footer-col-item">
+								<h4>Dirección</h4>
+								<address>
+									heikh Zayed Rd - Trade Centre - DIFC<br>
+									Dubai - Emiratos Árabes Unidos
+								</address>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-col-item">
+								<h4>Contáctanos</h4>
+								<div class="item-contact"> <a href="tel:630-885-9200"><span
+											class="link-id">P</span>:<span>68-70-334</span></a> <a
+										href="tel:6-831-2012"><span
+											class="link-id">F</span>:<span>630-839.2006</span></a> <a
+										href="mailto:info@brandcatmedia.com"><span
+											class="link-id">E</span>:<span>info@Rotana.com</span></a> </div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="footer-col-item">
+								<h4>Suscríbete para obtener noticias</h4>
+								<form class="signUpNewsletter" action="" method="get">
+									<input name="" class="gt-email form-control" placeholder="example@gmail.com"
+										type="text">
+									<input name="" class="btn-go" value="Ir" type="button">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom-layout">
+			<div class="copyright-tag">© 2022 Rose Rayhaan by Rotana. Todos los derechos reservados</div>
+		</div>
+	</footer>
 </body>
+
 </html>

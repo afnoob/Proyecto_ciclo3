@@ -1,5 +1,9 @@
-.container-reserva{
-  height: 20vw;
+.cont-reserva{
+width: 100%;
+height: 8vw;
+padding-top: 5vw;
+padding-left: 35vw;
+background: white;
 }
 
 .btn-2 {
@@ -14,7 +18,24 @@
 	border: none;
 	color: #eee;
 	padding: 0.5vw;
-	margin-left: 39vw;
+	margin-left: 16.4vw;
   margin-top: 1vw;
+  margin-bottom: 14vw;
   width: 8vw;
+}
+
+.fecha{
+  height: 2vw;
+}
+
+label {
+  display: block;
+  font: 1rem 'Fira Sans', sans-serif;
+  font-size: 1vw;
+  padding-left: 3vw;
+}
+
+input,
+label {
+  margin: .4rem 0;
 }
