@@ -568,6 +568,11 @@ background: #e6e0eb;
 	display: inline-block;
 }
 
+.btn-guardar{
+  margin: 1vw;
+  height: 2vw;
+}
+
 #container img {width: 100%;height: 100%;}
 
 .info {
@@ -736,14 +741,14 @@ background: #e6e0eb;
 
 .first-title-profile{
   text-align: center;
-  color: #fff;                          
-
-  font-size: "500px";
+  color: rgb(15, 38, 56);
+  font-size: 2vw;
 }
 
 .labels {
-  font-size: 20px;
-  color: #fff;
+  font-size: 1vw;
+  padding-top: 1vw;
+  color: rgb(15, 38, 56);
 }
 .vcenter {
   display: inline-block;
