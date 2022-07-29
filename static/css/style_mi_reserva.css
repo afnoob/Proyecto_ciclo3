@@ -86,14 +86,14 @@ div.contenedor {
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 100%;
+  height: 10%;
   background-color: rgb(15, 38, 56);
 }
 
 .slider1{
   padding: 0;
   width: 100%;
-  height: 100%;
+  height: 10%;
   margin: auto;
   overflow: hidden;
 }

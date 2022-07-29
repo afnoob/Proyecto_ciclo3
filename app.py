@@ -44,5 +44,9 @@ def reserva():
 def calificacion():
     return render_template('estrellas.html')
 
+@app.route('/mis-reservas')
+def reservar():
+    return render_template('Mi_reserva.html')
+
 if __name__ == "__main__":
     app.run()
