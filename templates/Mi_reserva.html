@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mis reservas | Rose Rayhaan</title>
+    <link rel="stylesheet" href="../static/css/style_mi_reserva.css">
+  </head>
+  <body>
+
+    <div class="mis_reservas">
+      
+
+        <nav>
+          <div class="logo">
+          <img src="../static/images/hote_rotana_logo3.png" align="left" alt="Rose Rayhaan"/>
+          </div>
+          <div class="rightSection">
+          <a class="links" href="#">Inicio</a>
+          <a class="links" href="#">Habitaciones</a>
+          <a class="selected links" href="/mis_reservas">Mis reservas</a>
+          <a class="links" href="#">Gestionar habitaciones</a>
+          <a class="links" href="#">Gestionar usuarios</a>
+          <a class="links" href="#">Gestionar administradores</a>
+          <a class="links" href="#">Contacto</a>
+          <a class="links" href="#">Mi cuenta</a>
+          </div>
+        </nav>
+    
+
+<div class="contenerdor">
+    <div class="slider1">
+
+      <ul>
+        <li><img src="../static/images/habitaciongrande.jpg" alt=""></li>
+
+    </div>
+
+    <div class="Reserva">
+    <h1>Buscar reserva</h1>
+    <form >
+      <label for="NReserva">Codigo de la reserva</label>
+      <input type="text" id="reserv" placeholder="Ingrese aca el codigo de la reserva" />
+      <label for="Cedula">Cedula</label>
+      <input type="number" id="ced" placeholder="Ingrese solo numeros" />
+      <input type="button" value="Buscar" onclick="myFunction()"/>
+    </form>
+
+    </div>
+
+    <div class="Reserva2" name="ventana" id="ventana">
+      <h1>Reserva del usuario</h1>
+      <h3>Codigo de reseva: </h3> 
+      <p>Fecha de ingreso<input type="date" id="Ingreso" style= "border-radius: 10px;font-size: larger;" /></p>
+      <p>Fecha de salida <input type="date" id="Salida" style= "border-radius: 10px;font-size: larger;" /></p>
+      <p>
+        Habitaciones reservadas
+        <select name="Habitaciones" id="Habitaciones"  onchange="change(this.id, 'Huespedes')" style= "border-radius: 10px;font-size: larger;" >
+          <option value="" disabled selected hidden>Habitaciones</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </p>
+
+      <p>
+        Huespedes
+        <select name="Huespedes" id="Huespedes" style= "border-radius: 10px;font-size: larger;">
+          <option value="" disabled selected hidden>Hauespedes</option>
+          <option value=""></option>
+        </select>
+      </p>
+      <input type="button" value="Modificar reserva" />
+      <input type="button" value="Cancelar reserva" />
+  
+      <div id="cerrar"><a href="javascript:cerrar()"> <img src="../static/images/close.png" alt="cerrar" width="50" height="50" /> </a></div>
+    </div>
+      
+
+<script>
+  function myFunction() {
+    if(document.getElementById("reserv").value ==="" || document.getElementById("ced").value===""){
+      alert("Ingrese los datos correctamente, asegurese que no haya campos vacios y que el valor digitado en la cedula sea numerico")
+    }else{
+      document.getElementById("ventana").style.display="block";
+    }
+}
+
+function change(Habitaciones, Huespedes) {
+Huespedes = document.getElementById("Huespedes");
+Habitaciones = document.getElementById("Habitaciones");
+Huespedes.value="";
+Huespedes.innerHTML="";
+
+if(Habitaciones.value == "1"){
+  var op_huespedes = [1, 2, 3];
+}else if(Habitaciones.value == "2"){
+  var op_huespedes = [3, 4, 5];
+}else if(Habitaciones.value == "3"){
+  var op_huespedes = [4, 5, 6, 7];
+}else{
+  var op_huespedes = [0, 0, 0, 0];
+}
+
+for(var option = 0; option < op_huespedes.length; option++) { 
+  var a = op_huespedes[option];
+  var opciones = document.createElement("option");
+  opciones.value = a;
+  opciones.innerHTML = a;
+  Huespedes.options.add(opciones);
+}
+}
+
+function cerrar() {
+      document.getElementById("ventana").style.display="none";
+}
+
+</script> 
+
+  </body>
+</html>
