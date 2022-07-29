@@ -1,0 +1,56 @@
+#form {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+#form p {
+    text-align: center;
+}
+
+#form label {
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    color: grey;
+    font-size: 1.5vw;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;/* bidi de bidireccional */
+    padding-right: 34vw;
+    height: 100%;
+    padding-top: 1vw;
+}
+
+ 
+label:hover,
+label:hover~label {
+    color: orange;
+}
+
+input[type="radio"]:checked~label {
+    color: orange;
+}
+
+.coment{
+    padding-top: 3vw;
+    padding-left: 35vw;
+}
+
+.ta{
+    width: 30vw;
+    height: 7vw;
+}
+
+.pos-btn{
+    padding-left: 59vw;
+    padding-top: 0.5vw;
+    padding-bottom: 7.1vw;
+}

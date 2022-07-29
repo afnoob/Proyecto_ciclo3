@@ -40,5 +40,9 @@ def lista():
 def reserva():
     return render_template('reserva.html')
 
+@app.route('/lista-habitaciones/calificacion')
+def calificacion():
+    return render_template('estrellas.html')
+
 if __name__ == "__main__":
     app.run()

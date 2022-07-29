@@ -546,6 +546,13 @@ body {
 
 }
 
+.control-2 {
+  position: absolute;
+  bottom: 10%;
+  left: 30.8%;
+
+}
+
 .btn {
   transform: translateY(0px);
   transition: 0.3s linear;
