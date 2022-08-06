@@ -7,31 +7,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registrarse</title>
   <link rel="stylesheet" href="../static/css/styles_login.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script>
+    function Register_user() {
+      alert("Se ha registrado correctamente");
+    }
+    </script>
 </head>
 
 <body>
-
+  
+  {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>{{ message }}!</strong> 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+  {% endfor %}
   <div class="login-register">
 
     <h1>Regístrate</h1>
-    <form action="/">
+    <form action="/formulario-registro" method='post'>
       <label for="username">Nombres</label>
-      <input type="text" placeholder="Nombres">
+      <input type="text" class="form-control" placeholder="Nombres" name="username">
       <label for="Apellido">Apellidos</label>
-      <input type="text" placeholder="Apellidos">
+      <input type="text" class="form-control" placeholder="Apellidos" name="Apellido">
       <label for="Cedula">Cédula</label>
-      <input type="text" placeholder="Cédula de ciudadanía">
+      <input type="text" class="form-control" placeholder="Cédula de ciudadanía" name="Cedula">
       <label for="Edad">Edad</label>
-      <input type="text" placeholder="Edad">
+      <input type="text" class="form-control" placeholder="Edad" name="Edad">
       <label for="Ciudad">Ciudad</label>
-      <input type="text" placeholder="Ciudad">
+      <input type="text" class="form-control" placeholder="Ciudad" name="Ciudad">
       <label for="Telefono">Teléfono</label>
-      <input type="text" placeholder="Teléfono">
+      <input type="text" class="form-control" placeholder="Teléfono" name="Telefono">
       <label for="Correo">Correo electrónico</label>
-      <input type="text" placeholder="example@gmail.com">
-      <label for="Correo">Contraseña</label>
-      <input type="text" placeholder="Contraseña">
-      <input type="submit" value="Registrarse">
+      <input type="text" class="form-control" placeholder="example@gmail.com" name="Correo">
+      <label for="Contraseña">Contraseña</label>
+      <input type="password" class="form-control" placeholder="Contraseña" name="Contraseña">
+      <input type="submit" value="Registrarse" class="form-control">
     </form>
   </div>
 </body>

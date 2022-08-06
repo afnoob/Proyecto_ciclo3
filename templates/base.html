@@ -7,18 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar sesión | Rose Rayhaan</title>
   <link rel="stylesheet" href="../static/css/styles_login.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
+  {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>{{ message }}!</strong> 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+  {% endfor %}
   <div class="login-box">
 
     <h1>Inicio de sesión</h1>
-    <form action="/inicio">
+    <form action="/login" method='post'>
       <label for="username">Usuario</label>
-      <input type="text" placeholder="">
+      <input type="text" placeholder="Correo@gmail.com" name="username">
       <label for="password">Contraseña</label>
-      <input type="password" placeholder="">
+      <input type="password" placeholder="Contraseña" name="Contraseña">
       <input type="submit" value="Iniciar sesión">
       <a href="/registro">Crear cuenta</a>
     </form>

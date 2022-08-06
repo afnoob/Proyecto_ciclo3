@@ -34,6 +34,7 @@
 				<a class="selected links" href="/administradores">Gestionar administradores</a>
 				<a class="links" href="#footer-Section">Contacto</a>
 				<a class="links" href="/perfil">Mi cuenta</a>
+				<a class="links" href="/log-out">Salir</a>
 			</div>
 		</nav>
 	</header>
@@ -48,20 +49,12 @@
 						<div class="col-xs-6">
 							<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
 									class="material-icons">&#xE147;</i> <span>Añadir administrador</span></a>
-							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i
-									class="material-icons">&#xE15C;</i> <span>Eliminar</span></a>
 						</div>
 					</div>
 				</div>
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
-							<th>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="selectAll">
-									<label for="selectAll"></label>
-								</span>
-							</th>
 							<th>Nombres</th>
 							<th>Apellidos</th>
 							<th>Cédula</th>
@@ -71,122 +64,30 @@
 						</tr>
 					</thead>
 					<tbody>
+						{% for user in users %}
 						<tr>
+							<td>{{ user.1 }}</td>
+							<td>{{ user.2 }}</td>
+							<td>{{ user.3 }}</td>
+							<td>{{ user.6 }}</td>
+							<td>{{ user.7 }}</td>
 							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox1" name="options[]" value="1">
-									<label for="checkbox1"></label>
-								</span>
-							</td>
-							<td>Nestor</td>
-							<td>Hernandez</td>
-							<td>12921218</td>
-							<td>3452332111</td>
-							<td>Nestor@gmail.com</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
+								<a href="/edit-admin/{{user.0}}" class="edit" data-toggle="modal"><i class="material-icons"
 										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+								<a href="/delete-admin/{{user.0}}" class="delete" data-toggle="modal"><i
 										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
 							</td>
 						</tr>
-						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox2" name="options[]" value="1">
-									<label for="checkbox2"></label>
-								</span>
-							</td>
-							<td>Viviana</td>
-							<td>Zambrano</td>
-							<td>263711212</td>
-							<td>3133654123</td>
-							<td>vivianita2@outlook.com</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox3" name="options[]" value="1">
-									<label for="checkbox3"></label>
-								</span>
-							</td>
-							<td>Maria</td>
-							<td>Moreno</td>
-							<td>821712721</td>
-							<td>3176125215</td>
-							<td>mhgf@hotmail.com</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox4" name="options[]" value="1">
-									<label for="checkbox4"></label>
-								</span>
-							</td>
-							<td>Camilo</td>
-							<td>Jimenez</td>
-							<td>212132131</td>
-							<td>321213213</td>
-							<td>camilojimenez@gmail.com</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox5" name="options[]" value="1">
-									<label for="checkbox5"></label>
-								</span>
-							</td>
-							<td>Alexa</td>
-							<td>Morales</td>
-							<td>21212121</td>
-							<td>3212312212</td>
-							<td>aniko@gmail.com</td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-							</td>
-						</tr>
+						{% endfor %}
 					</tbody>
 				</table>
-				<div class="clearfix">
-					<div class="hint-text">Visualizando<b>5</b> de <b>25</b> registros</div>
-					<ul class="pagination">
-						<li class="page-item disabled"><a href="#">Anterior</a></li>
-						<li class="page-item"><a href="#" class="page-link">1</a></li>
-						<li class="page-item"><a href="#" class="page-link">2</a></li>
-						<li class="page-item active"><a href="#" class="page-link">3</a></li>
-						<li class="page-item"><a href="#" class="page-link">4</a></li>
-						<li class="page-item"><a href="#" class="page-link">5</a></li>
-						<li class="page-item"><a href="#" class="page-link">Siguiente</a></li>
-					</ul>
-				</div>
 			</div>
 		</div>
 	</div>
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+				<form  action="/añadir-administrador" method="post">
 					<div class="modal-header">
 						<h4 class="modal-title">Añadir administrador</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -194,35 +95,35 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label>Nombre</label>
-							<input type="text" class="form-control" required>
+							<input type="text" class="form-control" name="nombre"required>
 						</div>
 						<div class="form-group">
 							<label>Apellido</label>
-							<input type="email" class="form-control" required>
+							<input type="text" class="form-control" name="apellido" required>
 						</div>
 						<div class="form-group">
 							<label>Cédula</label>
-							<textarea class="form-control" required></textarea>
+							<textarea class="form-control" required name="cedula"></textarea>
 						</div>
 						<div class="form-group">
 							<label>Edad</label>
-							<input type="text" class="form-control" required>
+							<input type="text" class="form-control" name="edad" required>
 						</div>
 						<div class="form-group">
 							<label>Ciudad</label>
-							<input type="text" class="form-control" required>
+							<input type="text" class="form-control" name="ciudad" required>
 						</div>
 						<div class="form-group">
 							<label>Teléfono</label>
-							<input type="text" class="form-control" required>
+							<input type="text" class="form-control" name="telefono" required>
 						</div>
 						<div class="form-group">
 							<label>Correo electrónico</label>
-							<input type="text" class="form-control" required>
+							<input type="email" class="form-control" name="correo" required>
 						</div>
 						<div class="form-group">
 							<label>Contraseña</label>
-							<input type="password" class="form-control" required>
+							<input type="password" class="form-control" name="contraseña" required>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -248,7 +149,7 @@
 						</div>
 						<div class="form-group">
 							<label>Apellidos</label>
-							<input type="email" class="form-control" required>
+							<input type="text" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>Cédula</label>
@@ -268,7 +169,7 @@
 						</div>
 						<div class="form-group">
 							<label>Correo electrónico</label>
-							<input type="text" class="form-control" required>
+							<input type="email" class="form-control" required>
 						</div>
 						<div class="form-group">
 							<label>Contraseña</label>
@@ -278,26 +179,6 @@
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
 						<input type="submit" class="btn btn-info" value="Guardar">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">
-						<h4 class="modal-title">Eliminar administrador</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>¿Está seguro que desea eliminarlo?</p>
-						<p class="text-warning"><small>Esta acción no se puede deshacer</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-danger" value="Delete">
 					</div>
 				</form>
 			</div>
