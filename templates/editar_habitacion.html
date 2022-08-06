@@ -26,15 +26,23 @@
                 <img src="../static/images/hote_rotana_logo3.png" align="left" alt="Rose Rayhaan" />
             </div>
             <div class="rightSection">
+                {% for user in user_login %}
                 <a class="links" href="/inicio">Inicio</a>
                 <a class="links" href="/lista-habitaciones">Habitaciones</a>
                 <a class="links" href="/mis-reservas">Mis reservas</a>
+                {% if user.9 == 'admin' or user.9=='superadmin' %}
                 <a class="selected links" href="/habitaciones">Gestionar habitaciones</a>
+                {% endif %}
+      			{% if user.9 == 'admin' or user.9=='superadmin' %}
                 <a class="links" href="/usuarios">Gestionar usuarios</a>
+                {% endif %}
+				{% if user.9 == 'superadmin' %}
                 <a class="links" href="/administradores">Gestionar administradores</a>
+                {% endif %}
                 <a class="links" href="#footer-Section">Contacto</a>
                 <a class="links" href="/perfil">Mi cuenta</a>
                 <a class="links" href="/log-out">Salir</a>
+                {% endfor %}
             </div>
         </nav>
     </header>

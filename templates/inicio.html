@@ -26,10 +26,10 @@
       <a class="selected links" href="/inicio">Inicio</a>
       <a class="links" href="/lista-habitaciones">Habitaciones</a>
       <a class="links" href="/mis-reservas">Mis reservas</a>
-      {% if user.9 == 'admin' %}
+      {% if user.9 == 'admin' or user.9=='superadmin' %}
       <a class="links" href="/habitaciones">Gestionar habitaciones</a>
       {% endif %}
-      {% if user.9 == 'admin' %}
+      {% if user.9 == 'admin' or user.9=='superadmin' %}
       <a class="links" href="/usuarios">Gestionar usuarios</a>
       {% endif %}
       {% if user.9 == 'superadmin' %}

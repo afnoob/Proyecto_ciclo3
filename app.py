@@ -36,8 +36,8 @@ def login():
             session['user'] = correo
             query2 = "SELECT * FROM User WHERE Correo='{c}'".format(c=correo)
             cursor.execute(query2)
-            data = cursor.fetchall()
-            return render_template('inicio.html', users=data)
+            user_data = cursor.fetchall()
+            return render_template('inicio.html', users=user_data)
         else:
             flash("!Usuario o contraseña incorrecta")
             return redirect('/')
@@ -83,7 +83,12 @@ def registrar_informacion():
 @app.route('/inicio')
 def iniciar():
     if 'user' in session:
-        return render_template('inicio.html', users=data)
+        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        cursor = sqlconnection.cursor()
+        query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+        cursor.execute(query1)
+        user_data = cursor.fetchall()
+        return render_template('inicio.html', users=user_data)
     else:
         return "No tiene permisos para acceder a la página"
     
@@ -96,7 +101,10 @@ def usuarios():
         query2 = "SELECT * FROM User WHERE Permiso='user'"
         cursor.execute(query2)
         data = cursor.fetchall()
-        return render_template('usuarios.html', users=data)
+        query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+        cursor.execute(query1)
+        user_data = cursor.fetchall()
+        return render_template('usuarios.html', users=data, user_login=user_data)
     else:
         return "No tiene permisos para acceder a la página"
 
@@ -109,7 +117,10 @@ def administradores():
         query2 = "SELECT * FROM User WHERE Permiso='admin'"
         cursor.execute(query2)
         data = cursor.fetchall()
-        return render_template('administradores.html', users=data)
+        query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+        cursor.execute(query1)
+        user_data = cursor.fetchall()
+        return render_template('administradores.html', users=data, user_login=user_data)
     else:
         return "No tiene permisos para acceder a la página"
 
@@ -121,7 +132,10 @@ def habitaciones():
         query2 = "SELECT * FROM Room"
         cursor.execute(query2)
         data = cursor.fetchall()
-        return render_template('habitaciones.html', rooms=data)
+        query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+        cursor.execute(query1)
+        user_data = cursor.fetchall()
+        return render_template('habitaciones.html', rooms=data, user_login=user_data)
     else:
         return "No tiene permisos para acceder a la página"
 
@@ -133,7 +147,10 @@ def obtener_habitacion(id):
     cursor.execute(query2)
     data = cursor.fetchall()
     sqlconnection.commit()
-    return render_template('editar_habitacion.html', edit_room = data)
+    query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+    cursor.execute(query1)
+    user_data = cursor.fetchall()
+    return render_template('editar_habitacion.html', edit_room = data, user_login=user_data)
 
 @app.route('/edit-user/<id>')
 def obtener_usuario(id):
@@ -143,7 +160,10 @@ def obtener_usuario(id):
     cursor.execute(query2)
     data = cursor.fetchall()
     sqlconnection.commit()
-    return render_template('editar_usuario.html', edit_user = data)
+    query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+    cursor.execute(query1)
+    user_data = cursor.fetchall()
+    return render_template('editar_usuario.html', edit_user = data, user_login=user_data)
 
 @app.route('/edit-admin/<id>')
 def obtener_admin(id):
@@ -153,7 +173,10 @@ def obtener_admin(id):
     cursor.execute(query2)
     data = cursor.fetchall()
     sqlconnection.commit()
-    return render_template('editar_administrador.html', edit_user = data)
+    query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+    cursor.execute(query1)
+    user_data = cursor.fetchall()
+    return render_template('editar_administrador.html', edit_user = data, user_login=user_data)
 
 @app.route('/update/<id>', methods=["POST"])
 def actualizar_habitacion(id):
@@ -312,14 +335,24 @@ def añadir_habitacion():
 @app.route('/perfil')
 def perfil():
     if 'user' in session:
-        return render_template('Mi_perfil.html')
+        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        cursor = sqlconnection.cursor()
+        query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+        cursor.execute(query1)
+        user_data = cursor.fetchall()
+        return render_template('Mi_perfil.html', users=user_data)
     else:
         return "No tiene permisos para acceder a la página"
 
 @app.route('/lista-habitaciones')
 def lista():
     if 'user' in session:
-        return render_template('lista_habitaciones.html')
+        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        cursor = sqlconnection.cursor()
+        query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+        cursor.execute(query1)
+        user_data = cursor.fetchall()
+        return render_template('lista_habitaciones.html', users=user_data)
     else:
         return "No tiene permisos para acceder a la página"
     
@@ -327,21 +360,36 @@ def lista():
 @app.route('/lista-habitaciones/reserva')
 def reserva():
     if 'user' in session:
-        return render_template('reserva.html')
+        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        cursor = sqlconnection.cursor()
+        query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+        cursor.execute(query1)
+        user_data = cursor.fetchall()
+        return render_template('reserva.html', users=user_data)
     else:
         return "No tiene permisos para acceder a la página"
 
 @app.route('/lista-habitaciones/calificacion')
 def calificacion():
     if 'user' in session:
-        return render_template('estrellas.html')
+        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        cursor = sqlconnection.cursor()
+        query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+        cursor.execute(query1)
+        user_data = cursor.fetchall()
+        return render_template('estrellas.html', users=user_data)
     else:
         return "No tiene permisos para acceder a la página"
 
 @app.route('/mis-reservas')
 def reservar():
     if 'user' in session:
-        return render_template('Mi_reserva.html')
+        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        cursor = sqlconnection.cursor()
+        query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+        cursor.execute(query1)
+        user_data = cursor.fetchall()
+        return render_template('Mi_reserva.html', users=user_data)
     else:
         return "No tiene permisos para acceder a la página"
 
