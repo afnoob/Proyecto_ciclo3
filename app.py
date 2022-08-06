@@ -34,7 +34,10 @@ def login():
         check_hash = check_password_hash(cadena, contraseña)
         if check_hash:
             session['user'] = correo
-            return redirect(url_for('iniciar'))
+            query2 = "SELECT * FROM User WHERE Correo='{c}'".format(c=correo)
+            cursor.execute(query2)
+            data = cursor.fetchall()
+            return render_template('inicio.html', users=data)
         else:
             flash("!Usuario o contraseña incorrecta")
             return redirect('/')
@@ -80,11 +83,6 @@ def registrar_informacion():
 @app.route('/inicio')
 def iniciar():
     if 'user' in session:
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
-        cursor = sqlconnection.cursor()
-        query2 = "SELECT * FROM User WHERE Permiso='user'"
-        cursor.execute(query2)
-        data = cursor.fetchall()
         return render_template('inicio.html', users=data)
     else:
         return "No tiene permisos para acceder a la página"
