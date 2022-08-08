@@ -56,11 +56,11 @@
             </div>
         </div>
     </div>
-
+    {% for room in rooms %}
     <div id="container">
         
         <div class="product-details">
-            <h1>Habitación 101</h1>
+            <h1>Habitación {{ room.1 }}</h1>
             <span class="hint-star star">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -68,20 +68,16 @@
                 <i class="fa fa-star-half-o" aria-hidden="true"></i>
                 <i class="fa fa-star-o" aria-hidden="true"></i>
             </span>
-            <p class="information">Una habitación de 28 m2 situada en el piso 1 con impresionantes vistas a la ciudad.
-                Todas las habitaciones disponen de conexión a Internet, una pequeña zona de estar con silla, armario,
-                escritorio, así como TV de pantalla plana LCD de 26". La cocina está equipada con refrigerador y
-                microondas. Tanto en las habitaciones con cama matrimonial como las que disponen de dos camas
-                individuales, el cuarto de baño es de cerámica.</p>
+            <p class="information">{{ room.2 }}</p>
             <div class="control">
-                <form action="/lista-habitaciones/reserva">
+                <form action="/lista-habitaciones/{{ room.0 }}">
                     <button class="btn" type="submit">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                         <span class="buy">Reservar</span>
                     </button>
                 </form>
-                
-                
+
+
             </div>
             <div class="control-2">
                 <form action="/lista-habitaciones/calificacion">
@@ -91,169 +87,42 @@
                     </button>
                 </form>
             </div>
-            
-            
-            
+
+
+
+        </div>
+
+        <div class="product-image">
+
+            <img src="../static/images/towers-rotana.jpg" alt="Omar Dsoky">
+
+            <div class="info">
+                <h2>Descripción</h2>
+                <ul>
+                    <li>
+                        <p>Servicio diario de limpieza</p>
+                    </li>
+                    <li>
+                        <p>Mini bar</p>
+                    </li>
+                    <li>
+                        <p>Caja fuerte personal</p>
+                    </li>
+                    <li>
+                        <p>Albornoces</p>
+                    </li>
+                    <li>
+                        <p>Secador de pelo</p>
+                    </li>
+                    <li>
+                        <p>Control de temperatura individual</p>
+                    </li>
+                </ul>
+            </div>
         </div>
         
-        <div class="product-image">
-
-            <img src="../static/images/towers-rotana.jpg" alt="Omar Dsoky">
-
-            <div class="info">
-                <h2>Descripción</h2>
-                <ul>
-                    <li>
-                        <p>Servicio diario de limpieza</p>
-                    </li>
-                    <li>
-                        <p>Mini bar</p>
-                    </li>
-                    <li>
-                        <p>Caja fuerte personal</p>
-                    </li>
-                    <li>
-                        <p>Albornoces</p>
-                    </li>
-                    <li>
-                        <p>Secador de pelo</p>
-                    </li>
-                    <li>
-                        <p>Control de temperatura individual</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
-
-    <div id="container">
-
-        <div class="product-details">
-
-            <h1>Habitación 102</h1>
-            <span class="hint-star star">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                <i class="fa fa-star-o" aria-hidden="true"></i>
-            </span>
-            <p class="information">Una habitación de 28 m2 situada en el piso 1 con impresionantes vistas a la ciudad.
-                Todas las habitaciones disponen de conexión a Internet, una pequeña zona de estar con silla, armario,
-                escritorio, así como TV de pantalla plana LCD de 26". La cocina está equipada con refrigerador y
-                microondas. Tanto en las habitaciones con cama matrimonial como las que disponen de dos camas
-                individuales, el cuarto de baño es de cerámica.</p>
-            <div class="control">
-                <form action="/lista-habitaciones/reserva">
-                    <button class="btn" type="submit">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                        <span class="buy">Reservar</span>
-                    </button>
-                </form>
-            </div>
-            <div class="control-2">
-                <form action="/lista-habitaciones/calificacion">
-                    <button class="btn" type="submit">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                        <span class="buy">Calificar</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-        <div class="product-image">
-
-            <img src="../static/images/towers-rotana.jpg" alt="Omar Dsoky">
-
-            <div class="info">
-                <h2>Descripción</h2>
-                <ul>
-                    <li>
-                        <p>Servicio diario de limpieza</p>
-                    </li>
-                    <li>
-                        <p>Mini bar</p>
-                    </li>
-                    <li>
-                        <p>Caja fuerte personal</p>
-                    </li>
-                    <li>
-                        <p>Albornoces</p>
-                    </li>
-                    <li>
-                        <p>Secador de pelo</p>
-                    </li>
-                    <li>
-                        <p>Control de temperatura individual</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="container">
-
-        <div class="product-details">
-
-            <h1>Habitación 103</h1>
-            <span class="hint-star star">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                <i class="fa fa-star-o" aria-hidden="true"></i>
-            </span>
-            <p class="information">Una habitación de 28 m2 situada en el piso 1 con impresionantes vistas a la ciudad.
-                Todas las habitaciones disponen de conexión a Internet, una pequeña zona de estar con silla, armario,
-                escritorio, así como TV de pantalla plana LCD de 26". La cocina está equipada con refrigerador y
-                microondas. Tanto en las habitaciones con cama matrimonial como las que disponen de dos camas
-                individuales, el cuarto de baño es de cerámica.</p>
-            <div class="control">
-                <form action="/lista-habitaciones/reserva">
-                    <button class="btn" type="submit">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                        <span class="buy">Reservar</span>
-                    </button>
-                </form>
-            </div>
-            <div class="control-2">
-                <form action="/lista-habitaciones/calificacion">
-                    <button class="btn" type="submit">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                        <span class="buy">Calificar</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-        <div class="product-image">
-
-            <img src="../static/images/towers-rotana.jpg" alt="Omar Dsoky">
-
-            <div class="info">
-                <h2>Descripción</h2>
-                <ul>
-                    <li>
-                        <p>Servicio diario de limpieza</p>
-                    </li>
-                    <li>
-                        <p>Mini bar</p>
-                    </li>
-                    <li>
-                        <p>Caja fuerte personal</p>
-                    </li>
-                    <li>
-                        <p>Albornoces</p>
-                    </li>
-                    <li>
-                        <p>Secador de pelo</p>
-                    </li>
-                    <li>
-                        <p>Control de temperatura individual</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
+    {% endfor %}
     <footer id="footer-Section">
         <div class="footer-top-layout">
             <div class="container">

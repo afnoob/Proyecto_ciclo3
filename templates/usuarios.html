@@ -33,7 +33,7 @@
 				{% if user.9 == 'admin' or user.9=='superadmin' %}
 				<a class="links" href="/habitaciones">Gestionar habitaciones</a>
 				{% endif %}
-      			{% if user.9 == 'admin' or user.9=='superadmin' %}
+				{% if user.9 == 'admin' or user.9=='superadmin' %}
 				<a class="selected links" href="/usuarios">Gestionar usuarios</a>
 				{% endif %}
 				{% if user.9 == 'superadmin' %}
@@ -80,8 +80,8 @@
 							<td>{{ user.6 }}</td>
 							<td>{{ user.7 }}</td>
 							<td>
-								<a href="/edit-user/{{user.0}}" class="edit" data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+								<a href="/edit-user/{{user.0}}" class="edit" data-toggle="modal"><i
+										class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
 								<a href="/delete-user/{{user.0}}" class="delete" data-toggle="modal"><i
 										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
 							</td>

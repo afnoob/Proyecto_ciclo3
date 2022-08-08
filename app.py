@@ -1,4 +1,5 @@
 from http.client import BAD_REQUEST
+from queue import Empty
 from flask import Flask, render_template, redirect, request, flash, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 import os, sqlite3
@@ -352,22 +353,80 @@ def lista():
         query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
         cursor.execute(query1)
         user_data = cursor.fetchall()
-        return render_template('lista_habitaciones.html', users=user_data)
+        query2 = "SELECT * FROM Room"
+        cursor.execute(query2)
+        data = cursor.fetchall()
+        return render_template('lista_habitaciones.html', users=user_data, rooms=data)
     else:
         return "No tiene permisos para acceder a la página"
     
 
-@app.route('/lista-habitaciones/reserva')
-def reserva():
+@app.route('/lista-habitaciones/<id>')
+def reserva(id):
     if 'user' in session:
         sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
         cursor = sqlconnection.cursor()
+        query2 = "SELECT * FROM Room WHERE id = {0}".format(id)
+        cursor.execute(query2)
+        data = cursor.fetchall()
+        sqlconnection.commit()
         query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
         cursor.execute(query1)
         user_data = cursor.fetchall()
-        return render_template('reserva.html', users=user_data)
+        return render_template('reserva.html', rooms = data, users=user_data)
     else:
         return "No tiene permisos para acceder a la página"
+
+@app.route('/agregar-reserva', methods=["POST", "GET"])
+def agregar_reserva():
+    if request.method == "POST":
+        ci = request.form["trip-start"]
+        co = request.form["trip-end"]
+        np = request.form["capacidad"]
+        id_r = request.form["idr"]
+        id_u = request.form["idu"]
+        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        cursor = sqlconnection.cursor()
+        query2 = "SELECT check_in FROM Booking WHERE check_in='{inicio}'".format(inicio=ci)
+        cursor.execute(query2)
+        data = cursor.fetchall()
+        query1 = "SELECT check_out FROM Booking WHERE check_out='{final}'".format(final=co)
+        cursor.execute(query1)
+        date_final = cursor.fetchall()
+        query4 ="SELECT id_room FROM Booking WHERE id_room='{idd}' AND check_in='{chi}'".format(idd=id_r, chi=ci)
+        cursor.execute(query4)
+        i_r = cursor.fetchall()
+        str_date_final = ''.join(map(str, date_final))
+        str_data = ''.join(map(str, data))
+        str_id = ''.join(map(str, i_r))
+        if str_data is Empty:
+            str_data='null'
+        if str_date_final is Empty:
+            str_date_final='null'
+        if str_id is Empty:
+            str_id='null'
+        print(str_id)
+        
+        electro = "('{a}',)".format(a=ci)
+        electro_f = "('{b}',)".format(b=co)
+        electro_id = "({c},)".format(c=id_r)
+        print(electro_id)
+        if str_data != electro and str_date_final != electro_f and str_id != electro_id:
+            query3 = "INSERT INTO Booking VALUES ({i},{iu},{ir},'{ci}','{co}',{ca})".format(i='null', iu=id_u, ir=id_r, ci=ci, co=co, ca=np)
+            cursor.execute(query3)
+            sqlconnection.commit()
+            return redirect('/lista-habitaciones')
+        elif str_data==electro or str_date_final==electro_f and str_id != electro_id:
+            query3 = "INSERT INTO Booking VALUES ({i},{iu},{ir},'{ci}','{co}',{ca})".format(i='null', iu=id_u, ir=id_r, ci=ci, co=co, ca=np)
+            cursor.execute(query3)
+            sqlconnection.commit()
+            return redirect('/lista-habitaciones')
+        else:
+            return "Esta fecha no está disponible para realizar la reserva"
+            
+    else:
+        return "No tiene permisos para acceder a esta página"
+
 
 @app.route('/lista-habitaciones/calificacion')
 def calificacion():

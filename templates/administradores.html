@@ -33,7 +33,7 @@
 				{% if user.9 == 'admin' or user.9=='superadmin' %}
 				<a class="links" href="/habitaciones">Gestionar habitaciones</a>
 				{% endif %}
-      			{% if user.9 == 'admin' or user.9=='superadmin' %}
+				{% if user.9 == 'admin' or user.9=='superadmin' %}
 				<a class="links" href="/usuarios">Gestionar usuarios</a>
 				{% endif %}
 				{% if user.9 == 'superadmin' %}
@@ -80,8 +80,8 @@
 							<td>{{ user.6 }}</td>
 							<td>{{ user.7 }}</td>
 							<td>
-								<a href="/edit-admin/{{user.0}}" class="edit" data-toggle="modal"><i class="material-icons"
-										data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+								<a href="/edit-admin/{{user.0}}" class="edit" data-toggle="modal"><i
+										class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
 								<a href="/delete-admin/{{user.0}}" class="delete" data-toggle="modal"><i
 										class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
 							</td>
@@ -95,7 +95,7 @@
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form  action="/añadir-administrador" method="post">
+				<form action="/añadir-administrador" method="post">
 					<div class="modal-header">
 						<h4 class="modal-title">Añadir administrador</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -103,7 +103,7 @@
 					<div class="modal-body">
 						<div class="form-group">
 							<label>Nombre</label>
-							<input type="text" class="form-control" name="nombre"required>
+							<input type="text" class="form-control" name="nombre" required>
 						</div>
 						<div class="form-group">
 							<label>Apellido</label>
