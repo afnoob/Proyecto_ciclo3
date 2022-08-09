@@ -428,17 +428,74 @@ def agregar_reserva():
         return "No tiene permisos para acceder a esta página"
 
 
-@app.route('/lista-habitaciones/calificacion')
-def calificacion():
+@app.route('/calificar/<id>')
+def calificacion(id):
     if 'user' in session:
         sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
         cursor = sqlconnection.cursor()
+        query2 = "SELECT * FROM Room WHERE id = {0}".format(id)
+        cursor.execute(query2)
+        data = cursor.fetchall()
+        sqlconnection.commit()
         query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
         cursor.execute(query1)
         user_data = cursor.fetchall()
-        return render_template('estrellas.html', users=user_data)
+        query3 = "SELECT * FROM Score WHERE Id_habitacion={i}".format(i=id)
+        cursor.execute(query3)
+        comment = cursor.fetchall()
+        return render_template('estrellas.html', rooms = data, users=user_data, comments=comment)
     else:
         return "No tiene permisos para acceder a la página"
+
+@app.route('/agregar_calificacion', methods=["POST", "GET"])
+def agregar_calificacion():
+    if request.method == "POST":
+        comment = request.form["comentario"]
+        calificacion_num = request.form["estrellas"]
+        id_room = request.form["idr"]
+        id_user = request.form["idu"]
+        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        cursor = sqlconnection.cursor()
+        query1 = "INSERT INTO Score VALUES ({i},'{o}',{c},{id},{idu})".format(i='null', o=comment, c=calificacion_num, id=id_room, idu=id_user)
+        cursor.execute(query1)
+        sqlconnection.commit()
+        return redirect("/lista-habitaciones")
+    else:
+        return "No tiene permisos para acceder a la página"
+
+@app.route('/delete-comment/<string:id>')
+def eliminar_comentarios(id):
+    sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+    cursor = sqlconnection.cursor()
+    query2 = "DELETE FROM Score WHERE id = {0}".format(id)
+    cursor.execute(query2)
+    sqlconnection.commit()
+    return redirect('/lista-habitaciones')
+
+@app.route('/edit-comment/<id>')
+def obtener_comentario(id):
+    sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+    cursor = sqlconnection.cursor()
+    query2 = "SELECT * FROM Score WHERE id = {0}".format(id)
+    cursor.execute(query2)
+    data = cursor.fetchall()
+    sqlconnection.commit()
+    query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+    cursor.execute(query1)
+    user_data = cursor.fetchall()
+    return render_template('editar_comentario.html', comments = data, users=user_data)
+
+@app.route('/update-comment/<id>', methods=["POST"])
+def actualizar_comentario(id):
+    if request.method == "POST":
+        opinion = request.form['comentario']
+        calificacion = request.form['estrellas']
+        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        cursor = sqlconnection.cursor()
+        query2 = "UPDATE Score SET Opinion = '{o}', Calificacion_numerica = {c} WHERE id = {i}".format(o=opinion, c=calificacion, i=id)
+        cursor.execute(query2)
+        sqlconnection.commit()
+        return redirect('/lista-habitaciones')
 
 @app.route('/mis-reservas')
 def reservar():
