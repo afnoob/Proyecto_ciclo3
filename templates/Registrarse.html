@@ -22,14 +22,14 @@
 <body>
 
   {% for message in get_flashed_messages() %}
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>{{ message }}!</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 
   {% endfor %}
   <div class="login-register">
-
+    <a href="/">Volver</a>
     <h1>Regístrate</h1>
     <form action="/formulario-registro" method='post'>
       <label for="username">Nombres</label>
@@ -49,7 +49,9 @@
       <label for="Contraseña">Contraseña</label>
       <input type="password" class="form-control" placeholder="Contraseña" name="Contraseña">
       <input type="submit" value="Registrarse" class="form-control">
+      
     </form>
+      
   </div>
 </body>
 

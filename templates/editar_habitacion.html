@@ -46,8 +46,11 @@
             </div>
         </nav>
     </header>
-
-
+    {% for message in get_flashed_messages() %}
+	<div class="alert alert-danger" role="alert">
+		<strong>{{ message }}!</strong>
+	  </div>
+	{% endfor %}
     {% for room in edit_room %}
     <div class="container">
         <div class="table-responsive">
