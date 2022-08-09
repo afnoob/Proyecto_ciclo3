@@ -52,5 +52,9 @@ input[type="radio"]:checked~label {
 .pos-btn{
     padding-left: 59vw;
     padding-top: 0.5vw;
-    padding-bottom: 7.1vw;
+    padding-bottom: 0.5vw;
+}
+
+.btn{
+    padding-left: 10vw;
 }

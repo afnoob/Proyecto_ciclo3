@@ -34,7 +34,7 @@
         <a class="links" href="/habitaciones">Gestionar habitaciones</a>
         {% endif %}
         {% if user.9 == 'admin' or user.9=='superadmin' %}
-        <a class="links" href="/usuarios">Gestionar usuarios</a>
+        <a class="links" href="/usuarios">Gestionar usuarios xd</a>
         {% endif %}
         {% if user.9 == 'superadmin' %}
         <a class="links" href="/administradores">Gestionar administradores</a>
@@ -46,27 +46,43 @@
       </div>
     </nav>
   </header>
-  <div class="cont-gray">
-    <div class="cont-reserva">
-      <label for="start">Check in:</label>
-
-      <input class="fecha" type="date" id="start" name="trip-start" value="2022-01-01" min="2022-01-01"
-        max="2026-12-31">
-
-      <label for="start">Check out:</label>
-
-      <input class="fecha" type="date" id="start" name="trip-start" value="2022-01-01" min="2022-01-01"
-        max="2026-12-31">
-    </div>
-    <form action="/lista-habitaciones">
+  {% for room in rooms %}
+  {% for user in users %}
+    
+    <form action="/agregar-reserva" method="post">
+      <div class="cont-gray">
+        <div class="cont-reserva">
+          <label contenteditable="false" for="start">Reserva en la habitación</label>
+          <input class="text" type="text" id="start" value="{{ room.1 }}" name="numero" readonly>
+          <input hidden="true" class="text" type="text" id="start" value="{{ user.0 }}" name="idu" readonly>
+          <input class="text" hidden="true" type="text" id="start" value="{{ room.0 }}" name="idr" readonly>
+        </div>
+        <div class="cont-reserva">
+          <label contenteditable="false" for="start">A nombre de</label>
+          <input class="text"  type="text" id="start" value="{{ user.1 }} {{ user.2 }}" name="name" readonly>
+        </div>
+        <div class="cont-reserva">
+          <label for="start">Fecha de ingreso:</label>
+    
+          <input class="fecha" type="date" id="start" name="trip-start" value="2022-01-01" min="2022-01-01"
+            max="2026-12-31">
+    
+          <label for="start">Fecha de salida:</label>
+    
+          <input class="fecha" type="date" id="start" name="trip-end" value="2022-01-01" min="2022-01-01"
+            max="2026-12-31">
+        </div>
+        <div class="cont-reserva">
+          <label for="start">Numero de personas:</label>
+          <input class="text" type="text" id="start" name="capacidad" value="1">  
+        </div>
       <div class="text-center">
         <input type="submit" class="btn-2"></input>
     </form>
 
   </div>
-
-  </div>
-
+  {% endfor %}
+  {% endfor %}
   <footer id="footer-Section">
     <div class="footer-top-layout">
       <div class="container">

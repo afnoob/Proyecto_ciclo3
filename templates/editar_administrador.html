@@ -33,10 +33,10 @@
                 {% if user.9 == 'admin' or user.9=='superadmin' %}
                 <a class="links" href="/habitaciones">Gestionar habitaciones</a>
                 {% endif %}
-      			{% if user.9 == 'admin' or user.9=='superadmin' %}
+                {% if user.9 == 'admin' or user.9=='superadmin' %}
                 <a class="links" href="/usuarios">Gestionar usuarios</a>
                 {% endif %}
-				{% if user.9 == 'superadmin' %}
+                {% if user.9 == 'superadmin' %}
                 <a class="selected links" href="/administradores">Gestionar administradores</a>
                 {% endif %}
                 <a class="links" href="#footer-Section">Contacto</a>
@@ -71,8 +71,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Cedula</label>
-                                    <input type="text" class="form-control" name="cedula" value="{{ user.3 }}"
-                                        required>
+                                    <input type="text" class="form-control" name="cedula" value="{{ user.3 }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Edad</label>
@@ -84,11 +83,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Telefono</label>
-                                    <input type="text" class="form-control" name="telefono" value="{{ user.6 }}" required>
+                                    <input type="text" class="form-control" name="telefono" value="{{ user.6 }}"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label>Permisos</label>
-                                    <input type="text" class="form-control" name="permisos" value="{{ user.9 }}" required>
+                                    <input type="text" class="form-control" name="permisos" value="{{ user.9 }}"
+                                        required>
                                 </div>
                             </div>
                             <div class="modal-footer">

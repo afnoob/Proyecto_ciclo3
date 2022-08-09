@@ -79,7 +79,7 @@ body {
 
 .login-register {
   width: 420px;
-  height: 820px;
+  height: 860px;
   background: rgb(15, 38, 56);
   color: #fff;
   top: 50%;
@@ -128,13 +128,16 @@ body {
 
 .login-register a {
   text-decoration: none;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 20px;
-  color: darkgrey;
+  color: white;
+  background: #1556ce;
+  padding: 0.4vw;
+  border-radius: 20px;
 }
 
 .login-register a:hover {
-  color: #fff;
+  color: black;
 }
 
 .login-register input[type="submit"] {

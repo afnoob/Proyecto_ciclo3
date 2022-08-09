@@ -33,10 +33,10 @@
                 {% if user.9 == 'admin' or user.9=='superadmin' %}
                 <a class="selected links" href="/habitaciones">Gestionar habitaciones</a>
                 {% endif %}
-      			{% if user.9 == 'admin' or user.9=='superadmin' %}
+                {% if user.9 == 'admin' or user.9=='superadmin' %}
                 <a class="links" href="/usuarios">Gestionar usuarios</a>
                 {% endif %}
-				{% if user.9 == 'superadmin' %}
+                {% if user.9 == 'superadmin' %}
                 <a class="links" href="/administradores">Gestionar administradores</a>
                 {% endif %}
                 <a class="links" href="#footer-Section">Contacto</a>
@@ -46,8 +46,11 @@
             </div>
         </nav>
     </header>
-
-
+    {% for message in get_flashed_messages() %}
+	<div class="alert alert-danger" role="alert">
+		<strong>{{ message }}!</strong>
+	  </div>
+	{% endfor %}
     {% for room in edit_room %}
     <div class="container">
         <div class="table-responsive">

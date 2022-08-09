@@ -33,7 +33,7 @@
 				{% if user.9 == 'admin' or user.9=='superadmin' %}
 				<a class="selected links" href="/habitaciones">Gestionar habitaciones</a>
 				{% endif %}
-      			{% if user.9 == 'admin' or user.9=='superadmin' %}
+				{% if user.9 == 'admin' or user.9=='superadmin' %}
 				<a class="links" href="/usuarios">Gestionar usuarios</a>
 				{% endif %}
 				{% if user.9 == 'superadmin' %}
@@ -46,6 +46,11 @@
 			</div>
 		</nav>
 	</header>
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-info" role="alert">
+		<strong>{{ message }}!</strong>
+	  </div>
+	{% endfor %}
 	<div class="container">
 		<div class="table-responsive">
 			<div class="table-wrapper">

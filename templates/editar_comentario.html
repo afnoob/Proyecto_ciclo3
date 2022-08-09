@@ -38,15 +38,12 @@
         </div>
     </nav>
 
-        {% for room in rooms %}
-        {% for user in users %}
-        <form action="/agregar_calificacion" method="post">
+        {% for comment in comments %}
+        <form action="/update-comment/{{comment.0}}" method="post">
             <div class="calificacion">
                 <div class="coment">
-                    <p><textarea class="ta" name="comentario" rows="5" cols="50" placeholder="Deja tu comentario"></textarea>
+                    <p><textarea class="ta" name="comentario" rows="5" cols="50">{{ comment.1 }}</textarea>
                     </p>
-                    <input hidden="true" class="text" type="text" id="start" value="{{ room.0 }}" name="idr" readonly>
-                    <input hidden="true" class="text" type="text" id="start" value="{{ user.0 }}" name="idu" readonly>
                 </div>
             <p class="clasificacion">
                 <input id="radio1" type="radio" name="estrellas" value="5">
@@ -72,27 +69,7 @@
             
             </div>
         </form>
-        
         {% endfor %}
-        {% endfor %}
-        {% for comment in comments %}
-        {% for user in users %}
-        <div class="coment">
-            <label for=""><h4>Calificación: {{ comment.2 }}</h4></label>
-            <p><textarea class="ta" name="comentario" rows="5" cols="50" readonly>{{ comment.1 }}</textarea>
-        {% if user.0 == comment.4 %}
-        <div>
-                    <a href="/edit-comment/{{comment.0}}">Editar</a>
-                    <a href="/delete-comment/{{comment.0}}">Eliminar</a>
-        </div>
-           
-        {% endif %}
-    </div>
-        {% endfor %}
-        {% endfor %}
-        
-
-        
 
     <footer id="footer-Section">
         <div class="footer-top-layout">
