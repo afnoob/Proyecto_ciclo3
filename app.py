@@ -19,6 +19,10 @@ def __init__(self):
 def index():
     return render_template('base.html')
 
+@app.route('/datos-personales')
+def datos_personales():
+    return render_template('datos_personales.html')
+
 @app.route('/login', methods=["POST"])
 def login():
     if request.method == 'POST':
@@ -60,34 +64,40 @@ def register():
 
 @app.route('/formulario-registro', methods=['POST', 'GET'])
 def registrar_informacion():
-    if request.method == "POST":
-        username = request.form['username']
-        apellido = request.form['Apellido']
-        cedula = request.form['Cedula']
-        edad = request.form['Edad']
-        ciudad = request.form['Ciudad']
-        telefono = request.form['Telefono']
-        correo = request.form['Correo']
-        contraseña = generate_password_hash(request.form['Contraseña'], method="sha256")
-        sqlconnection = sqlite3.Connection("Rose.db")
-        cursor = sqlconnection.cursor()
-        query2 = "SELECT Correo FROM User WHERE Correo='{co}'".format(co=correo)
-        cursor.execute(query2)
-        data = cursor.fetchall()
-        str_data = ''.join(map(str, data))
-        electro = "('{a}',)".format(a=correo)
-        try:
-            if(str_data != electro):
-                query1 = "INSERT INTO User VALUES ({f},'{n}','{a}',{c},{e},'{ci}',{t},'{co}','{con}','{per}')".format(f='null',n=username, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, co=correo, con=contraseña, per='user')        
-                cursor.execute(query1)
-                sqlconnection.commit()
-                return redirect('/')
-        except:
-            flash("!Los campos Cédula, Edad y Teléfono deben ser de caracter numérico")
-            return redirect('/registro')
-        else:
-            flash("!Ya existe una cuenta registrada con ese correo")
-            return redirect('/registro')
+    try:
+        if request.method == "POST":
+            checkbox=request.form["check"]
+            username = request.form['username']
+            apellido = request.form['Apellido']
+            cedula = request.form['Cedula']
+            edad = request.form['Edad']
+            ciudad = request.form['Ciudad']
+            telefono = request.form['Telefono']
+            correo = request.form['Correo']
+            contraseña = generate_password_hash(request.form['Contraseña'], method="sha256")
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            query2 = "SELECT Correo FROM User WHERE Correo='{co}'".format(co=correo)
+            cursor.execute(query2)
+            data = cursor.fetchall()
+            str_data = ''.join(map(str, data))
+            electro = "('{a}',)".format(a=correo)
+            try:
+                if(str_data != electro and checkbox=='True'):
+                    query1 = "INSERT INTO User VALUES ({f},'{n}','{a}',{c},{e},'{ci}',{t},'{co}','{con}','{per}')".format(f='null',n=username, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, co=correo, con=contraseña, per='user')        
+                    cursor.execute(query1)
+                    sqlconnection.commit()
+                    flash("!Usuario registrado con éxito")
+                    return redirect('/')
+            except:
+                flash("!Los campos Cédula, Edad y Teléfono deben ser de caracter numérico")
+                return redirect('/registro')
+            else:
+                flash("!Ya existe una cuenta registrada con ese correo")
+                return redirect('/registro')
+    except:
+        flash("Por favor acepte la política de tratamiento de datos personales")
+        return redirect('/registro')
 
 @app.route('/inicio')
 def iniciar():

@@ -79,7 +79,7 @@ body {
 
 .login-register {
   width: 420px;
-  height: 860px;
+  height: 960px;
   background: rgb(15, 38, 56);
   color: #fff;
   top: 50%;
@@ -131,13 +131,15 @@ body {
   font-size: 15px;
   line-height: 20px;
   color: white;
-  background: #1556ce;
   padding: 0.4vw;
   border-radius: 20px;
 }
 
 .login-register a:hover {
   color: black;
+  background: #1556ce;
+  padding: 0.4vw;
+
 }
 
 .login-register input[type="submit"] {
@@ -148,4 +150,9 @@ body {
   color: #fff;
   font-size: 18px;
   border-radius: 20px;
+}
+
+.login-register p{
+  font-size: 0.7vw;
+  padding-top: 0.5vw;
 }

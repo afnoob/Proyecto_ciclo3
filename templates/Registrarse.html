@@ -12,24 +12,19 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-  <script>
-    function Register_user() {
-      alert("Se ha registrado correctamente");
-    }
-  </script>
 </head>
 
 <body>
 
   {% for message in get_flashed_messages() %}
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
     <strong>{{ message }}!</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 
   {% endfor %}
   <div class="login-register">
-    <a href="/">Volver</a>
+    
     <h1>Regístrate</h1>
     <form action="/formulario-registro" method='post'>
       <label for="username">Nombres</label>
@@ -48,7 +43,10 @@
       <input type="text" class="form-control" placeholder="example@gmail.com" name="Correo">
       <label for="Contraseña">Contraseña</label>
       <input type="password" class="form-control" placeholder="Contraseña" name="Contraseña">
+      <a href="/datos-personales" target="_blank">Leer tratamiento de datos personales</a>
+      <label><p>Acepto la política de tratamiento de datos personales</p><input type="checkbox" name="check" id="cbox1" value="True"></label>  
       <input type="submit" value="Registrarse" class="form-control">
+      <a href="/">Volver</a>
       
     </form>
       
