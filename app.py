@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 app.config["SECRET_KEY"] = os.urandom(24)
 
-currentLocation = os.path.dirname(os.path.abspath(__file__))
+#currentLocation = os.path.dirname(os.path.abspath(__file__))
 
 def __init__(self):
     con=sqlite3.connect('rose.db')
@@ -24,7 +24,7 @@ def login():
     if request.method == 'POST':
         correo = request.form["username"]
         contraseña = request.form["Contraseña"]
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query1 = "SELECT Contraseña FROM User WHERE Correo='{c}'".format(c=correo)
         cursor.execute(query1)
@@ -69,7 +69,7 @@ def registrar_informacion():
         telefono = request.form['Telefono']
         correo = request.form['Correo']
         contraseña = generate_password_hash(request.form['Contraseña'], method="sha256")
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query2 = "SELECT Correo FROM User WHERE Correo='{co}'".format(co=correo)
         cursor.execute(query2)
@@ -92,7 +92,7 @@ def registrar_informacion():
 @app.route('/inicio')
 def iniciar():
     if 'user' in session:
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
         cursor.execute(query1)
@@ -105,7 +105,7 @@ def iniciar():
 @app.route('/usuarios', methods=['POST', 'GET'])
 def usuarios():
     if 'user' in session:
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query2 = "SELECT * FROM User WHERE Permiso='user'"
         cursor.execute(query2)
@@ -121,7 +121,7 @@ def usuarios():
 @app.route('/administradores', methods=['POST', 'GET'])
 def administradores():
     if 'user' in session:
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query2 = "SELECT * FROM User WHERE Permiso='admin'"
         cursor.execute(query2)
@@ -136,7 +136,7 @@ def administradores():
 @app.route('/habitaciones', methods=['POST', 'GET'])
 def habitaciones():
     if 'user' in session:
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query2 = "SELECT * FROM Room"
         cursor.execute(query2)
@@ -150,7 +150,7 @@ def habitaciones():
 
 @app.route('/edit/<id>')
 def obtener_habitacion(id):
-    sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+    sqlconnection = sqlite3.Connection("Rose.db")
     cursor = sqlconnection.cursor()
     query2 = "SELECT * FROM Room WHERE id = {0}".format(id)
     cursor.execute(query2)
@@ -163,7 +163,7 @@ def obtener_habitacion(id):
 
 @app.route('/edit-user/<id>')
 def obtener_usuario(id):
-    sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+    sqlconnection = sqlite3.Connection("Rose.db")
     cursor = sqlconnection.cursor()
     query2 = "SELECT * FROM User WHERE id = {0}".format(id)
     cursor.execute(query2)
@@ -176,7 +176,7 @@ def obtener_usuario(id):
 
 @app.route('/edit-admin/<id>')
 def obtener_admin(id):
-    sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+    sqlconnection = sqlite3.Connection("Rose.db")
     cursor = sqlconnection.cursor()
     query2 = "SELECT * FROM User WHERE id = {0}".format(id)
     cursor.execute(query2)
@@ -194,7 +194,7 @@ def actualizar_habitacion(id):
         descripcion = request.form['descripcion']
         disponibilidad = request.form['disponibilidad']
         precio = request.form['precio']
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         try:
             query2 = "UPDATE Room SET Numero = {n}, Descripcion = '{des}', Disponibilidad = '{dis}', Precio = {p} WHERE id = {i}".format(n=numero, des=descripcion, dis=disponibilidad, p=precio, i=id)
@@ -216,7 +216,7 @@ def actualizar_usuario(id):
         ciudad = request.form['ciudad']
         telefono = request.form['telefono']
         permisos = request.form['permisos']
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         try:
             query2 = "UPDATE User SET Nombre = '{n}', Apellido = '{a}', Cedula = {c}, Edad = {e}, Ciudad = '{ci}', Telefono ={t}, Permiso='{per}' WHERE id = {i}".format(n=nombre, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, per=permisos, i=id)
@@ -239,7 +239,7 @@ def actualizar_admin(id):
         ciudad = request.form['ciudad']
         telefono = request.form['telefono']
         permisos = request.form['permisos']
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         try:
             query2 = "UPDATE User SET Nombre = '{n}', Apellido = '{a}', Cedula = {c}, Edad = {e}, Ciudad = '{ci}', Telefono ={t}, Permiso='{per}' WHERE id = {i}".format(n=nombre, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, per=permisos, i=id)
@@ -253,7 +253,7 @@ def actualizar_admin(id):
 
 @app.route('/delete/<string:id>')
 def eliminar_habitaciones(id):
-    sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+    sqlconnection = sqlite3.Connection("Rose.db")
     cursor = sqlconnection.cursor()
     query2 = "DELETE FROM Room WHERE id = {0}".format(id)
     cursor.execute(query2)
@@ -263,7 +263,7 @@ def eliminar_habitaciones(id):
 
 @app.route('/delete-user/<string:id>')
 def eliminar_usuarios(id):
-    sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+    sqlconnection = sqlite3.Connection("Rose.db")
     cursor = sqlconnection.cursor()
     query2 = "DELETE FROM User WHERE id = {0}".format(id)
     cursor.execute(query2)
@@ -273,7 +273,7 @@ def eliminar_usuarios(id):
 
 @app.route('/delete-admin/<string:id>')
 def eliminar_admin(id):
-    sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+    sqlconnection = sqlite3.Connection("Rose.db")
     cursor = sqlconnection.cursor()
     query2 = "DELETE FROM User WHERE id = {0}".format(id)
     cursor.execute(query2)
@@ -293,7 +293,7 @@ def añadir_usuario():
         correo = request.form['correo']
         contraseña = generate_password_hash(request.form['contraseña'], method="sha256")
 
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query2 = "SELECT Correo FROM User WHERE Correo='{co}'".format(co=correo)
         cursor.execute(query2)
@@ -326,7 +326,7 @@ def añadir_administrador():
         correo = request.form['correo']
         contraseña = generate_password_hash(request.form['contraseña'], method="sha256")
 
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query2 = "SELECT Correo FROM User WHERE Correo='{co}'".format(co=correo)
         cursor.execute(query2)
@@ -355,7 +355,7 @@ def añadir_habitacion():
         disponibilidad = request.form['disponibilidad']
         precio = request.form['precio']
 
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query2 = "SELECT Numero FROM Room WHERE Numero='{n}'".format(n=numero)
         cursor.execute(query2)
@@ -382,7 +382,7 @@ def añadir_habitacion():
 @app.route('/perfil')
 def perfil():
     if 'user' in session:
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
         cursor.execute(query1)
@@ -394,7 +394,7 @@ def perfil():
 @app.route('/lista-habitaciones')
 def lista():
     if 'user' in session:
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
         cursor.execute(query1)
@@ -410,7 +410,7 @@ def lista():
 @app.route('/lista-habitaciones/<id>')
 def reserva(id):
     if 'user' in session:
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query2 = "SELECT * FROM Room WHERE id = {0}".format(id)
         cursor.execute(query2)
@@ -431,7 +431,7 @@ def agregar_reserva():
         np = request.form["capacidad"]
         id_r = request.form["idr"]
         id_u = request.form["idu"]
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query2 = "SELECT check_in FROM Booking WHERE check_in='{inicio}'".format(inicio=ci)
         cursor.execute(query2)
@@ -483,7 +483,7 @@ def agregar_reserva():
 @app.route('/calificar/<id>')
 def calificacion(id):
     if 'user' in session:
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query2 = "SELECT * FROM Room WHERE id = {0}".format(id)
         cursor.execute(query2)
@@ -506,7 +506,7 @@ def agregar_calificacion():
         calificacion_num = request.form["estrellas"]
         id_room = request.form["idr"]
         id_user = request.form["idu"]
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         try:
             query1 = "INSERT INTO Score VALUES ({i},'{o}',{c},{id},{idu})".format(i='null', o=comment, c=calificacion_num, id=id_room, idu=id_user)
@@ -520,7 +520,7 @@ def agregar_calificacion():
 
 @app.route('/delete-comment/<string:id>')
 def eliminar_comentarios(id):
-    sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+    sqlconnection = sqlite3.Connection("Rose.db")
     cursor = sqlconnection.cursor()
     query2 = "DELETE FROM Score WHERE id = {0}".format(id)
     cursor.execute(query2)
@@ -530,7 +530,7 @@ def eliminar_comentarios(id):
 
 @app.route('/edit-comment/<id>')
 def obtener_comentario(id):
-    sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+    sqlconnection = sqlite3.Connection("Rose.db")
     cursor = sqlconnection.cursor()
     query2 = "SELECT * FROM Score WHERE id = {0}".format(id)
     cursor.execute(query2)
@@ -546,7 +546,7 @@ def actualizar_comentario(id):
     if request.method == "POST":
         opinion = request.form['comentario']
         calificacion = request.form['estrellas']
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         try:
             query2 = "UPDATE Score SET Opinion = '{o}', Calificacion_numerica = {c} WHERE id = {i}".format(o=opinion, c=calificacion, i=id)
@@ -561,7 +561,7 @@ def actualizar_comentario(id):
 @app.route('/mis-reservas')
 def reservar():
     if 'user' in session:
-        sqlconnection = sqlite3.Connection(currentLocation + "\Rose.db")
+        sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
         cursor.execute(query1)
