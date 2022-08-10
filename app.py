@@ -11,7 +11,7 @@ app.config["SECRET_KEY"] = os.urandom(24)
 #currentLocation = os.path.dirname(os.path.abspath(__file__))
 
 def __init__(self):
-    con=sqlite3.connect('rose.db')
+    con=sqlite3.connect('Rose.db')
     c = con.cursor
     con.commit()
 
@@ -572,4 +572,4 @@ def reservar():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
