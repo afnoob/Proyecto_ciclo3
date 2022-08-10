@@ -580,6 +580,5 @@ def reservar():
     else:
         return "No tiene permisos para acceder a la página"
 
-
 if __name__ == "__main__":
     app.run()
