@@ -47,33 +47,33 @@
 
             <div class="row mt-3">
                 <div class="col-md-6"> <label class="labels">Nombre</label><input type="text" class="form-control" 
-                        value= {{ user[1] }} ></div>
+                        value= {{ user[1] }} required ></div>
                 <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control"
-                        value={{ user[2] }}></div>
+                        value={{ user[2] }} required ></div>
             </div>
 
             <div class="row mt-3">
                 <div class="col-md-6"> <label class="labels">Teléfono </label><input type="text" class="form-control"
-                        value={{ user[6] }}></div>
+                        value={{ user[6] }} required ></div>
                 <div class="col-md-6"> <label class="labels">Cédula</label><input type="text" class="form-control"
-                        value={{ user[3] }}></div>
+                        value={{ user[3] }} required ></div>
             </div>
 
             <div class="row mt-3">
                 <div class="col-md-6"> <label class="labels">Edad</label><input type="text" class="form-control"
-                        value={{ user[4] }}></div>
+                        value={{ user[4] }} required ></div>
                 <div class="col-md-6"><label class="labels">Ciudad</label><input type="text" class="form-control"
-                        value={{ user[5] }}>
+                        value={{ user[5] }} required >
                     </div>
 
             </div>
 
 
             <div class="row mt-3">
-                <div class="col-md-6"><label class="labels">Correo electrónico</label><input type="text"
-                        class="form-control" value={{ user[7] }}></div>
-                <div class="col-md-6"><label class="labels">Contraseña</label><input type="text" class="form-control"
-                        value={{ user[8] }}></div>
+                <div class="col-md-6"><label class="labels">Correo electrónico</label><input type="email"
+                        class="form-control" value={{ user[7] }} required ></div>
+                <div class="col-md-6"><label class="labels">Contraseña</label><input type="password" class="form-control"
+                        value={{ user[8] }} required ></div>
             </div>
             
         </div>
