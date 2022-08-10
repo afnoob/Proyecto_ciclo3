@@ -42,40 +42,42 @@
 
     <h1 class="first-title-profile"> Configurar Mi Perfil</h1>
 
-    <div class="container rounded bg-white mt-3 mb-3 ">
+    {% for user in users %}
+        <div class="container rounded bg-white mt-3 mb-3 ">
+
+            <div class="row mt-3">
+                <div class="col-md-6"> <label class="labels">Nombre</label><input type="text" class="form-control" 
+                        value= {{ user[1] }} name="nombre" required ></div>
+                <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control"
+                        value={{ user[2] }} name="apellido" required ></div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6"> <label class="labels">Teléfono </label><input type="text" class="form-control"
+                        value={{ user[6] }} name="telefono" required ></div>
+                <div class="col-md-6"> <label class="labels">Cédula</label><input type="text" class="form-control"
+                        value={{ user[3] }} name="id" required ></div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6"> <label class="labels">Edad</label><input type="text" class="form-control"
+                        value={{ user[4] }} name="edad" required ></div>
+                <div class="col-md-6"><label class="labels">Ciudad</label><input type="text" class="form-control"
+                        value={{ user[5] }}  name="ciudad" required >
+                    </div>
+
+            </div>
 
 
-        <div class="row mt-3">
-            <div class="col-md-6"> <label class="labels">Nombre</label><input type="text" class="form-control"
-                    value="Pepito"></div>
-            <div class="col-md-6"><label class="labels">Apellidos</label><input type="text" class="form-control"
-                    value="Perez"></div>
+            <div class="row mt-3">
+                <div class="col-md-6"><label class="labels">Correo electrónico</label><input type="email"
+                        class="form-control" value={{ user[7] }} name="correo" required ></div>
+                <div class="col-md-6"><label class="labels">Contraseña</label><input type="password" class="form-control"
+                        value={{ user[8] }} name="contrasena" required ></div>
+            </div>
+            
         </div>
-
-        <div class="row mt-3">
-            <div class="col-md-6"> <label class="labels">Teléfono </label><input type="text" class="form-control"
-                    value=" 30000000"></div>
-            <div class="col-md-6"> <label class="labels">Cédula</label><input type="text" class="form-control"
-                    value="11111111"></div>
-        </div>
-
-        <div class="row mt-3">
-            <div class="col-md-6"> <label class="labels">Edad</label><input type="text" class="form-control"
-                    value="100 años"></div>
-             <div class="col-md-6"><label class="labels">Ciudad</label><input type="text" class="form-control"
-                    value="Bogotá D.C">
-                </div>
-
-        </div>
-
-
-        <div class="row mt-3">
-            <div class="col-md-6"><label class="labels">Correo electrónico</label><input type="text"
-                    class="form-control" value="pepitoperez100@gmail.com"></div>
-            <div class="col-md-6"><label class="labels">Contraseña</label><input type="text" class="form-control"
-                    value="contraseña"></div>
-        </div>
-    </div>
+    {% endfor %}
 
 
     <div class=" text-center">
