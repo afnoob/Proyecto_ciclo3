@@ -199,67 +199,79 @@ def obtener_admin(id):
 
 @app.route('/update/<id>', methods=["POST"])
 def actualizar_habitacion(id):
-    if request.method == "POST":
-        numero = request.form['numero']
-        descripcion = request.form['descripcion']
-        disponibilidad = request.form['disponibilidad']
-        precio = request.form['precio']
-        sqlconnection = sqlite3.Connection("Rose.db")
-        cursor = sqlconnection.cursor()
-        try:
-            query2 = "UPDATE Room SET Numero = {n}, Descripcion = '{des}', Disponibilidad = '{dis}', Precio = {p} WHERE id = {i}".format(n=numero, des=descripcion, dis=disponibilidad, p=precio, i=id)
-            cursor.execute(query2)
-            sqlconnection.commit()
-            flash("!Habitación actualizada con éxito")
-            return redirect('/habitaciones')
-        except:
-            flash("¡Error! ¡Los campos Número y Precio deben ser numéricos")
-            return redirect('/habitaciones')
+    try:
+        if request.method == "POST":
+            numero = request.form['numero']
+            descripcion = request.form['descripcion']
+            disponibilidad = request.form['disponibilidad']
+            precio = request.form['precio']
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            try:
+                query2 = "UPDATE Room SET Numero = {n}, Descripcion = '{des}', Disponibilidad = '{dis}', Precio = {p} WHERE id = {i}".format(n=numero, des=descripcion, dis=disponibilidad, p=precio, i=id)
+                cursor.execute(query2)
+                sqlconnection.commit()
+                flash("!Habitación actualizada con éxito")
+                return redirect('/habitaciones')
+            except:
+                flash("¡Error! ¡Los campos Número y Precio deben ser numéricos")
+                return redirect('/habitaciones')
+    except:
+        flash("¡Error al momento de actualizar la habitación")
+        return redirect('/habitaciones')
 
 @app.route('/update-user/<id>', methods=["POST"])
 def actualizar_usuario(id):
-    if request.method == "POST":
-        nombre = request.form['nombre']
-        apellido = request.form['apellido']
-        cedula = request.form['cedula']
-        edad = request.form['edad']
-        ciudad = request.form['ciudad']
-        telefono = request.form['telefono']
-        permisos = request.form['permisos']
-        sqlconnection = sqlite3.Connection("Rose.db")
-        cursor = sqlconnection.cursor()
-        try:
-            query2 = "UPDATE User SET Nombre = '{n}', Apellido = '{a}', Cedula = {c}, Edad = {e}, Ciudad = '{ci}', Telefono ={t}, Permiso='{per}' WHERE id = {i}".format(n=nombre, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, per=permisos, i=id)
-            cursor.execute(query2)
-            sqlconnection.commit()
-            flash("!Usuario editado con éxito")
-            return redirect('/usuarios')
-        except:
-            flash("¡Error! !Los campos Cédula, Edad y Teléfono deben ser numéricos")
-            return redirect('/usuarios')
+    try:
+        if request.method == "POST":
+            nombre = request.form['nombre']
+            apellido = request.form['apellido']
+            cedula = request.form['cedula']
+            edad = request.form['edad']
+            ciudad = request.form['ciudad']
+            telefono = request.form['telefono']
+            permisos = request.form['permisos']
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            try:
+                query2 = "UPDATE User SET Nombre = '{n}', Apellido = '{a}', Cedula = {c}, Edad = {e}, Ciudad = '{ci}', Telefono ={t}, Permiso='{per}' WHERE id = {i}".format(n=nombre, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, per=permisos, i=id)
+                cursor.execute(query2)
+                sqlconnection.commit()
+                flash("!Usuario editado con éxito")
+                return redirect('/usuarios')
+            except:
+                flash("¡Error! !Los campos Cédula, Edad y Teléfono deben ser numéricos")
+                return redirect('/usuarios')
+    except:
+        flash("¡Error al momento de actualizar el usuario")
+        return redirect('/usuarios')
 
 
 @app.route('/update-admin/<id>', methods=["POST"])
 def actualizar_admin(id):
-    if request.method == "POST":
-        nombre = request.form['nombre']
-        apellido = request.form['apellido']
-        cedula = request.form['cedula']
-        edad = request.form['edad']
-        ciudad = request.form['ciudad']
-        telefono = request.form['telefono']
-        permisos = request.form['permisos']
-        sqlconnection = sqlite3.Connection("Rose.db")
-        cursor = sqlconnection.cursor()
-        try:
-            query2 = "UPDATE User SET Nombre = '{n}', Apellido = '{a}', Cedula = {c}, Edad = {e}, Ciudad = '{ci}', Telefono ={t}, Permiso='{per}' WHERE id = {i}".format(n=nombre, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, per=permisos, i=id)
-            cursor.execute(query2)
-            sqlconnection.commit()
-            flash("!Administrador editado con éxito")
-            return redirect('/administradores')
-        except:
-            flash("¡Error! !Los campos Cédula, Edad y Teléfono deben ser numéricos")
-            return redirect('/administradores')
+    try:
+        if request.method == "POST":
+            nombre = request.form['nombre']
+            apellido = request.form['apellido']
+            cedula = request.form['cedula']
+            edad = request.form['edad']
+            ciudad = request.form['ciudad']
+            telefono = request.form['telefono']
+            permisos = request.form['permisos']
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            try:
+                query2 = "UPDATE User SET Nombre = '{n}', Apellido = '{a}', Cedula = {c}, Edad = {e}, Ciudad = '{ci}', Telefono ={t}, Permiso='{per}' WHERE id = {i}".format(n=nombre, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, per=permisos, i=id)
+                cursor.execute(query2)
+                sqlconnection.commit()
+                flash("!Administrador editado con éxito")
+                return redirect('/administradores')
+            except:
+                flash("¡Error! !Los campos Cédula, Edad y Teléfono deben ser numéricos")
+                return redirect('/administradores')
+    except:
+        flash("¡Error al momento de actualizar el administrador")
+        return redirect('/administradores')
 
 @app.route('/delete/<string:id>')
 def eliminar_habitaciones(id):
@@ -293,100 +305,112 @@ def eliminar_admin(id):
 
 @app.route('/añadir-usuario', methods=["POST", "GET"])
 def añadir_usuario():
-    if request.method == "POST":
-        username = request.form['nombre']
-        apellido = request.form['apellido']
-        cedula = request.form['cedula']
-        edad = request.form['edad']
-        ciudad = request.form['ciudad']
-        telefono = request.form['telefono']
-        correo = request.form['correo']
-        contraseña = generate_password_hash(request.form['contraseña'], method="sha256")
+    try:
+        if request.method == "POST":
+            username = request.form['nombre']
+            apellido = request.form['apellido']
+            cedula = request.form['cedula']
+            edad = request.form['edad']
+            ciudad = request.form['ciudad']
+            telefono = request.form['telefono']
+            correo = request.form['correo']
+            contraseña = generate_password_hash(request.form['contraseña'], method="sha256")
 
-        sqlconnection = sqlite3.Connection("Rose.db")
-        cursor = sqlconnection.cursor()
-        query2 = "SELECT Correo FROM User WHERE Correo='{co}'".format(co=correo)
-        cursor.execute(query2)
-        data = cursor.fetchall()
-        str_data = ''.join(map(str, data))
-        electro = "('{a}',)".format(a=correo)
-        try:
-            if(str_data != electro):
-                query1 = "INSERT INTO User VALUES ({f},'{n}','{a}',{c},{e},'{ci}',{t},'{co}','{con}','{per}')".format(f='null',n=username, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, co=correo, con=contraseña, per='user')       
-                cursor.execute(query1)
-                sqlconnection.commit()
-                flash("!Se ha registrado el usuario con éxito")
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            query2 = "SELECT Correo FROM User WHERE Correo='{co}'".format(co=correo)
+            cursor.execute(query2)
+            data = cursor.fetchall()
+            str_data = ''.join(map(str, data))
+            electro = "('{a}',)".format(a=correo)
+            try:
+                if(str_data != electro):
+                    query1 = "INSERT INTO User VALUES ({f},'{n}','{a}',{c},{e},'{ci}',{t},'{co}','{con}','{per}')".format(f='null',n=username, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, co=correo, con=contraseña, per='user')       
+                    cursor.execute(query1)
+                    sqlconnection.commit()
+                    flash("!Se ha registrado el usuario con éxito")
+                    return redirect('/usuarios')
+            except:
+                flash("!Error! !Los campos Cedula, Edad y Teléfono deben ser valores numéricos")
                 return redirect('/usuarios')
-        except:
-            flash("!Error! !Los campos Cedula, Edad y Teléfono deben ser valores numéricos")
-            return redirect('/usuarios')
-        else:
-            flash("!Error! !Ya existe un usuario registrado con ese correo electrónico")
-            return redirect('/usuarios')
+            else:
+                flash("!Error! !Ya existe un usuario registrado con ese correo electrónico")
+                return redirect('/usuarios')
+    except:
+        flash("!Error al momento de crear el usuario")
+        return redirect('/usuarios')
 
 @app.route('/añadir-administrador', methods=["POST", "GET"])
 def añadir_administrador():
-    if request.method == "POST":
-        username = request.form['nombre']
-        apellido = request.form['apellido']
-        cedula = request.form['cedula']
-        edad = request.form['edad']
-        ciudad = request.form['ciudad']
-        telefono = request.form['telefono']
-        correo = request.form['correo']
-        contraseña = generate_password_hash(request.form['contraseña'], method="sha256")
+    try:
+        if request.method == "POST":
+            username = request.form['nombre']
+            apellido = request.form['apellido']
+            cedula = request.form['cedula']
+            edad = request.form['edad']
+            ciudad = request.form['ciudad']
+            telefono = request.form['telefono']
+            correo = request.form['correo']
+            contraseña = generate_password_hash(request.form['contraseña'], method="sha256")
 
-        sqlconnection = sqlite3.Connection("Rose.db")
-        cursor = sqlconnection.cursor()
-        query2 = "SELECT Correo FROM User WHERE Correo='{co}'".format(co=correo)
-        cursor.execute(query2)
-        data = cursor.fetchall()
-        str_data = ''.join(map(str, data))
-        electro = "('{a}',)".format(a=correo)
-        try:
-            if(str_data != electro):
-                query1 = "INSERT INTO User VALUES ({f},'{n}','{a}',{c},{e},'{ci}',{t},'{co}','{con}','{per}')".format(f='null',n=username, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, co=correo, con=contraseña, per='admin')       
-                cursor.execute(query1)
-                sqlconnection.commit()
-                flash("!Se ha registrado el administrador con éxito")
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            query2 = "SELECT Correo FROM User WHERE Correo='{co}'".format(co=correo)
+            cursor.execute(query2)
+            data = cursor.fetchall()
+            str_data = ''.join(map(str, data))
+            electro = "('{a}',)".format(a=correo)
+            try:
+                if(str_data != electro):
+                    query1 = "INSERT INTO User VALUES ({f},'{n}','{a}',{c},{e},'{ci}',{t},'{co}','{con}','{per}')".format(f='null',n=username, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, co=correo, con=contraseña, per='admin')       
+                    cursor.execute(query1)
+                    sqlconnection.commit()
+                    flash("!Se ha registrado el administrador con éxito")
+                    return redirect('/administradores')
+            except:
+                flash("¡Los campos Cédula, Edad y Teléfono deben ser numéricos")
                 return redirect('/administradores')
-        except:
-            flash("¡Los campos Cédula, Edad y Teléfono deben ser numéricos")
-            return redirect('/administradores')
-        else:
-            flash("Ya existe un administrador registrado con ese correo electrónico")
-            return redirect('/administradores')
+            else:
+                flash("Ya existe un administrador registrado con ese correo electrónico")
+                return redirect('/administradores')
+    except:
+        flash("!Error al momento de crear el administrador")
+        return redirect('/administradores')
 
 @app.route('/añadir-habitacion', methods=["POST", "GET"])
 def añadir_habitacion():
-    if request.method == "POST":
-        numero = request.form['numero']
-        descripcion = request.form['descripcion']
-        disponibilidad = request.form['disponibilidad']
-        precio = request.form['precio']
+    try:
+        if request.method == "POST":
+            numero = request.form['numero']
+            descripcion = request.form['descripcion']
+            disponibilidad = request.form['disponibilidad']
+            precio = request.form['precio']
 
-        sqlconnection = sqlite3.Connection("Rose.db")
-        cursor = sqlconnection.cursor()
-        query2 = "SELECT Numero FROM Room WHERE Numero='{n}'".format(n=numero)
-        cursor.execute(query2)
-        data = cursor.fetchall()
-        str_data = ''.join(map(str, data))
-        print(str_data)
-        electro = "({a},)".format(a=numero)
-        print(electro)
-        try:
-            if(str_data != electro):
-                query1 = "INSERT INTO Room VALUES ({f},{n},'{d}','{dis}',{p})".format(f='null',n=numero, d=descripcion, dis=disponibilidad, p=precio)        
-                cursor.execute(query1)
-                sqlconnection.commit()
-                flash("!Habitación registrada con éxito")
-                return redirect('/habitaciones')
-            else:
-                flash("!Error! !Ya existe una habitación registrada con ese número")
-                return redirect('/habitaciones')
-        except:
-                flash("!Error! ¡Los campos número y precio deben ser numéricos")
-                return redirect('/habitaciones')
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            query2 = "SELECT Numero FROM Room WHERE Numero='{n}'".format(n=numero)
+            cursor.execute(query2)
+            data = cursor.fetchall()
+            str_data = ''.join(map(str, data))
+            print(str_data)
+            electro = "({a},)".format(a=numero)
+            print(electro)
+            try:
+                if(str_data != electro):
+                    query1 = "INSERT INTO Room VALUES ({f},{n},'{d}','{dis}',{p})".format(f='null',n=numero, d=descripcion, dis=disponibilidad, p=precio)        
+                    cursor.execute(query1)
+                    sqlconnection.commit()
+                    flash("!Habitación registrada con éxito")
+                    return redirect('/habitaciones')
+                else:
+                    flash("!Error! !Ya existe una habitación registrada con ese número")
+                    return redirect('/habitaciones')
+            except:
+                    flash("!Error! ¡Los campos número y precio deben ser numéricos")
+                    return redirect('/habitaciones')
+    except:
+        flash("!Error al momento de agregar la habitación")
+        return redirect('/habitaciones')
         
 
 @app.route('/perfil')
@@ -511,22 +535,26 @@ def calificacion(id):
 
 @app.route('/agregar_calificacion', methods=["POST", "GET"])
 def agregar_calificacion():
-    if request.method == "POST":
-        comment = request.form["comentario"]
-        calificacion_num = request.form["estrellas"]
-        id_room = request.form["idr"]
-        id_user = request.form["idu"]
-        sqlconnection = sqlite3.Connection("Rose.db")
-        cursor = sqlconnection.cursor()
-        try:
-            query1 = "INSERT INTO Score VALUES ({i},'{o}',{c},{id},{idu})".format(i='null', o=comment, c=calificacion_num, id=id_room, idu=id_user)
-            cursor.execute(query1)
-            sqlconnection.commit()
-            flash("Calificación añadida con éxito")
-            return redirect ("/lista-habitaciones")
-        except:
-            flash("¡Error! ¡Ha ocurrido un error al momento de añadir el comentario")
-            return redirect ("/lista-habitaciones")
+    try:
+        if request.method == "POST":
+            comment = request.form["comentario"]
+            calificacion_num = request.form["estrellas"]
+            id_room = request.form["idr"]
+            id_user = request.form["idu"]
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            try:
+                query1 = "INSERT INTO Score VALUES ({i},'{o}',{c},{id},{idu})".format(i='null', o=comment, c=calificacion_num, id=id_room, idu=id_user)
+                cursor.execute(query1)
+                sqlconnection.commit()
+                flash("Calificación añadida con éxito")
+                return redirect ("/lista-habitaciones")
+            except:
+                flash("¡Error! ¡Ha ocurrido un error al momento de añadir el comentario")
+                return redirect ("/lista-habitaciones")
+    except:
+        flash("!Ha ocurrido un error al agregar el comentario")
+        return redirect("/lista-habitaciones")
 
 @app.route('/delete-comment/<string:id>')
 def eliminar_comentarios(id):
@@ -553,20 +581,24 @@ def obtener_comentario(id):
 
 @app.route('/update-comment/<id>', methods=["POST"])
 def actualizar_comentario(id):
-    if request.method == "POST":
-        opinion = request.form['comentario']
-        calificacion = request.form['estrellas']
-        sqlconnection = sqlite3.Connection("Rose.db")
-        cursor = sqlconnection.cursor()
-        try:
-            query2 = "UPDATE Score SET Opinion = '{o}', Calificacion_numerica = {c} WHERE id = {i}".format(o=opinion, c=calificacion, i=id)
-            cursor.execute(query2)
-            sqlconnection.commit()
-            flash("Comentario actualizado con éxito")
-            return redirect('/lista-habitaciones')
-        except:
-            flash("¡Ocurrió un error al momento de actualizar la página")
-            return redirect('/lista-habitaciones')
+    try:
+        if request.method == "POST":
+            opinion = request.form['comentario']
+            calificacion = request.form['estrellas']
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            try:
+                query2 = "UPDATE Score SET Opinion = '{o}', Calificacion_numerica = {c} WHERE id = {i}".format(o=opinion, c=calificacion, i=id)
+                cursor.execute(query2)
+                sqlconnection.commit()
+                flash("Comentario actualizado con éxito")
+                return redirect('/lista-habitaciones')
+            except:
+                flash("¡Ocurrió un error al momento de actualizar la página")
+                return redirect('/lista-habitaciones')
+    except:
+        flash("¡Ocurrió un error al momento de actualizar la página")
+        return redirect('/lista-habitaciones')
 
 @app.route('/mis-reservas')
 def reservar():
