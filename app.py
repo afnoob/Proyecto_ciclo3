@@ -413,21 +413,45 @@ def añadir_habitacion():
         return redirect('/habitaciones')
         
 
-@app.route('/perfil')
+@app.route('/perfil', methods=["POST", "GET"])
 def perfil():
-    if 'user' in session:
+    if 'user' in session  and request.method == "GET": 
         sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
         cursor.execute(query1)
         user_data = cursor.fetchall()
         return render_template('Mi_perfil.html', users=user_data)
+    if 'user' in session  and request.method == "POST":
+        try:
+            nombre = request.form['nombre']
+            apellido = request.form['apellido']
+            cedula = request.form['cedula']
+            edad = request.form['edad']
+            ciudad = request.form['ciudad']
+            telefono = request.form['telefono']
+            clave = generate_password_hash(request.form['contrasena'], method="sha256")            
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            try:
+                query2 = "UPDATE User SET Nombre = '{n}', Apellido = '{a}', Edad = {e}, Ciudad = '{ci}', Telefono ={t}, Contraseña='{cl}' WHERE Cedula = {c}".format(n=nombre, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, cl=clave)
+                cursor.execute(query2)
+                sqlconnection.commit()
+                flash("!Usuario editado con éxito")
+                return redirect('/inicio')
+            except:
+                flash("¡Error! !Los campos Cédula, Edad y Teléfono deben ser numéricos")
+                return redirect('/inicio')
+        except:
+            flash("¡Error al momento de actualizar el usuario")
+            return redirect('/inicio') 
+
     else:
         return "No tiene permisos para acceder a la página"
 
 @app.route('/lista-habitaciones')
 def lista():
-    if 'user' in session:
+    if 'user' in session :
         sqlconnection = sqlite3.Connection("Rose.db")
         cursor = sqlconnection.cursor()
         query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
