@@ -39,10 +39,17 @@
             {% endfor %}
         </div>
     </nav>
-
+    
 
     <h1 class="first-title-profile"> Configurar Mi Perfil</h1>
 
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-info" role="alert">
+            <div class=" text-center">
+                <strong class="text-center">{{ message }}!</strong>
+            </div>
+        </div>
+    {% endfor %}
     {% for user in users %}
         <form action='/perfil' method="post">
             <div class="container rounded bg-white mt-3 mb-3 ">
@@ -74,7 +81,7 @@
                     <div class="col-md-6"><label class="labels">Correo electrónico</label><input type="email"
                             class="form-control" value={{ user[7] }} name="correo" readonly="readonly"></div>
                     <div class="col-md-6"><label class="labels">Contraseña</label><input type="text" class="form-control"
-                            value="" name="contrasena" required ></div>
+                             name="contrasena" required autocomplete="off"></div>
                 </div>
                 
             </div>
@@ -82,16 +89,17 @@
                 <button class="btn-guardar btn-primary profile-button" type="submit">Guardar Perfil</button>
             </div>
         </form>
-    {% endfor %}
+    
 
     <div class=" text-center">
-        <form action="/inicio" method='post'>
+        <form action="/inicio" >
             <div>
                 <input type="submit" class="btn btn-default" value="Cancelar">
             </div>
         </form>
     </div>
 
+	{% endfor %}
 
 
     <footer id="footer-Section">
