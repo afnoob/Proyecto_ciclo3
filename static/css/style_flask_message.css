@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+ }
+ 
+ .alert{
+position: absolute;
+    width: 100%;
+background-color: azure;
+    
+ }
+
+ .alert h1{
+    margin: 0;
+  font-size: 40px; 
+ /* text-shadow: black 0.1em 0.1em 0.1em;*/
+  
+  }
+
+

@@ -18,4 +18,6 @@ cd ..
 
 3- instalar flask: pip install flask
 
-4- correr el programa: python app.py
+4- instalar datetime: pip install datetime
+
+5- correr el programa: python app.py

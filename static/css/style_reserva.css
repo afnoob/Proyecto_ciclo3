@@ -40,3 +40,19 @@ label {
   margin: .4rem 0;
 }
 
+.infor{
+  margin-left: 620px;
+  margin-top: 30px;
+}
+#ced_R {
+  position: relative;
+  margin-left: 520px;
+  width: 800px;
+
+}
+#corr {
+  position: relative;
+  margin-left: 520px;
+ width: 800px;
+
+}

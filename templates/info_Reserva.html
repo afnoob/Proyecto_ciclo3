@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8">
-  <title>Mis reservas | Rose Rayhaan</title>
-  <link rel="stylesheet" href="../static/css/style_mi_reserva.css">
-  <link rel="icon" href="../static/images/hotel3.png">
-  <link rel="stylesheet" href="../static/css/styles.css">
-  <link rel="stylesheet" href="../static/css/styles_header.css">
-  <link rel="stylesheet" href="../static/css/style_flask_message.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src=../static/js/main.js></script>
-</head>
-
-<body>
-
+  <head>
+    <meta charset="utf-8">
+    <title>Mis reservas | Rose Rayhaan</title>
+    <link rel="stylesheet" href="../static/css/style_mi_reserva.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/styles_header.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  </head>
   <body>
 
     <div class="mis_reservas">
@@ -50,24 +40,6 @@
         </div>
     </nav>
     
-	{% for message in get_flashed_messages() %}
-	<div class="alert alert-info" role="alert">
-		<strong>{{ message }}!</strong>
-	  </div>
-	{% endfor %}
-
-
-   <!-- {% with mensajes = get_flashed_messages() %}
-    {% if mensajes %}
-    {% for mensaje in mensajes %}
-    <div class="alert" id="alert">
-       <h1> {{mensaje}} </h1>
-        <div id="cerrar"><a href="javascript:cerrar()"> <img src="../static/images/close.png" alt="cerrar" width="50" height="50" /> </a></div>
-      </div>
-    {% endfor %}
-    {% endif %}
-    {% endwith %} -->
-
 
 <div class="contenerdor">
     <div class="slider1">
@@ -77,18 +49,46 @@
 
     </div>
 
-    <div class="Reserva">
-    <h1>Buscar reserva</h1>
-    <form action="/mis-reservas/reserva" method="post">
-      <label for="NReserva">Correo</label>
-      <input type="text" id="reserv" name="reserv" placeholder="Ingrese aca su correo" required/>
-      <label for="Cedula">Cedula</label>
-      <input type="number" id="ced" name="ced" placeholder="Ingrese solo numeros" required />
-      <input type="submit" value="Buscar"/>
-    </form>
+    
+    <div class="Reserva2" name="ventana" id="ventana">
+      <h1>Reserva del usuario</h1>
+      <form action="/update-reserva/{{data.0.1}}/{{data.0.0}}" method="post">
+      <p>Fecha de ingreso<input type="date" name="Ingreso" id="Ingreso" value="{{data.0.2}}" style= "border-radius: 10px;font-size: larger;" /></p>
+      <p>Fecha de salida <input type="date" name="Salida" id="Salida" value="{{data.0.3}}" style= "border-radius: 10px;font-size: larger;" /></p>
+      <p>
+       
+        {% for user in users %}
+        {% if user.9 == 'user'  %}
+        Cedula de la persona a cargo de la reserva
+        <input type="text" class="form-control" name="cedula" value="{{data.0.1}}" readonly>
+        Numero de la habitacion reservada
+        <input type="number" class="form-control" name="room" id="room" value="{{data.0.0}}" readonly>
+        Correo de la persona a cargo de la reserva
+        <input type="text" class="form-control" name="correo" value="{{data.0.4}}" readonly>
 
+        {% endif %}
+
+        {% if user.9 == 'admin' or user.9=='superadmin'  %}
+        Cedula de la persona a cargo de la reserva
+        <input type="text" class="form-control" name="cedula" value="{{data.0.1}}" >
+        Numero de la habitacion reservada
+        <input type="number" class="form-control" name="room" value="{{data.0.0}}" >
+        Correo de la persona a cargo de la reserva
+        <input type="text" class="form-control" name="correo" value="{{data.0.4}}" >
+
+        {% endif %}
+
+        {% endfor %}
+ 
+
+      </p>
+      
+      <input type="submit" value="Modificar reserva" /></form>
+<form action="/delete-reserva/{{data.0.1}}/{{data.0.0}}">
+      <input type="submit" value="Cancelar reserva" onclick="return ConfirmDelete()" />
+</form>
+      <div id="cerrar"><a href="/mis-reservas"> <img src="../static/images/close.png" alt="cerrar" width="50" height="50" /> </a></div>
     </div>
-
     <footer id="footer-Section">
       <div class="footer-top-layout">
           <div class="container">
@@ -136,14 +136,20 @@
           <div class="copyright-tag">© 2022 Rose Rayhaan by Rotana. Todos los derechos reservados</div>
       </div>
   </footer>
-
 <script>
-    function cerrar() {
-      document.getElementById("alert").style.display="none";
-}
-
-
+    function ConfirmDelete() {
+        var respuesta = confirm("Estas seguro que deseas eliminar la reserva")
+        if (respuesta == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 </script>
+
+
 
   </body>
 </html>
+

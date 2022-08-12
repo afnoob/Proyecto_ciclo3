@@ -1,8 +1,10 @@
 from http.client import BAD_REQUEST
+from msilib.schema import Error
 from queue import Empty
 from flask import Flask, render_template, redirect, request, flash, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 import os, sqlite3
+from datetime import datetime 
 
 app = Flask(__name__)
 
@@ -237,6 +239,10 @@ def actualizar_usuario(id):
                 query2 = "UPDATE User SET Nombre = '{n}', Apellido = '{a}', Cedula = {c}, Edad = {e}, Ciudad = '{ci}', Telefono ={t}, Permiso='{per}' WHERE id = {i}".format(n=nombre, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, per=permisos, i=id)
                 cursor.execute(query2)
                 sqlconnection.commit()
+                query3 = "UPDATE Reservas SET Cedula = '{ce}' WHERE id = {i}".format(ce=cedula,)
+                cursor.execute(query3)
+                sqlconnection.commit()
+
                 flash("!Usuario editado con éxito")
                 return redirect('/usuarios')
             except:
@@ -481,62 +487,6 @@ def reserva(id):
     else:
         return "No tiene permisos para acceder a la página"
 
-@app.route('/agregar-reserva', methods=["POST", "GET"])
-def agregar_reserva():
-    if request.method == "POST":
-        ci = request.form["trip-start"]
-        co = request.form["trip-end"]
-        np = request.form["capacidad"]
-        id_r = request.form["idr"]
-        id_u = request.form["idu"]
-        sqlconnection = sqlite3.Connection("Rose.db")
-        cursor = sqlconnection.cursor()
-        query2 = "SELECT check_in FROM Booking WHERE check_in='{inicio}'".format(inicio=ci)
-        cursor.execute(query2)
-        data = cursor.fetchall()
-        query1 = "SELECT check_out FROM Booking WHERE check_out='{final}'".format(final=co)
-        cursor.execute(query1)
-        date_final = cursor.fetchall()
-        query4 ="SELECT id_room FROM Booking WHERE id_room='{idd}' AND check_in='{chi}'".format(idd=id_r, chi=ci)
-        cursor.execute(query4)
-        i_r = cursor.fetchall()
-        str_date_final = ''.join(map(str, date_final))
-        str_data = ''.join(map(str, data))
-        str_id = ''.join(map(str, i_r))
-        if str_data is Empty:
-            str_data='null'
-        if str_date_final is Empty:
-            str_date_final='null'
-        if str_id is Empty:
-            str_id='null'
-        print(str_id)
-        
-        electro = "('{a}',)".format(a=ci)
-        electro_f = "('{b}',)".format(b=co)
-        electro_id = "({c},)".format(c=id_r)
-        print(electro_id)
-        try:
-            if str_data != electro and str_date_final != electro_f and str_id != electro_id:
-                query3 = "INSERT INTO Booking VALUES ({i},{iu},{ir},'{ci}','{co}',{ca})".format(i='null', iu=id_u, ir=id_r, ci=ci, co=co, ca=np)
-                cursor.execute(query3)
-                sqlconnection.commit()
-                flash("!Reserva añadida con éxito")
-                return redirect('/lista-habitaciones')
-            elif str_data==electro or str_date_final==electro_f and str_id != electro_id:
-                query3 = "INSERT INTO Booking VALUES ({i},{iu},{ir},'{ci}','{co}',{ca})".format(i='null', iu=id_u, ir=id_r, ci=ci, co=co, ca=np)
-                cursor.execute(query3)
-                sqlconnection.commit()
-                flash("!Reserva añadida con éxito")
-                return redirect('/lista-habitaciones')
-            else:
-                flash("!Esta fecha no está disponible para realizar la reserva")
-                return redirect('/lista-habitaciones')
-        except:
-            flash("!El campo número de personas debe ser numérico")
-            return redirect('/lista-habitaciones')
-    else:
-        return "No tiene permisos para acceder a esta página"
-
 
 @app.route('/calificar/<id>')
 def calificacion(id):
@@ -635,6 +585,144 @@ def reservar():
         return render_template('Mi_reserva.html', users=user_data)
     else:
         return "No tiene permisos para acceder a la página"
+        
+
+
+@app.route('/lista-habitaciones/reserva/reservar', methods=['GET','POST'])
+def reservar1():
+    try:
+        if 'user' in session:
+            if request.method == 'POST':
+                entrada = request.form["start"]
+                salida = request.form["end"]
+                sqlconnection = sqlite3.Connection("Rose.db")
+                cursor = sqlconnection.cursor()
+                query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+                cursor.execute(query1)
+                user_data = cursor.fetchall()
+                query2 = "SELECT Numero FROM Room WHERE Disponibilidad='{c}'".format(c=True)
+                cursor.execute(query2)
+                habitacion = cursor.fetchall()
+                query4 = "SELECT Fecha_entrada FROM Reservas" 
+                cursor.execute(query4)
+                fecha_entrada = cursor.fetchall()
+                query5 = "SELECT Fecha_salida FROM Reservas" 
+                cursor.execute(query5)
+                fecha_salida = cursor.fetchall()
+                query6 = "SELECT Numero FROM Reservas" 
+                cursor.execute(query6)
+                Num = cursor.fetchall()
+                lista = []
+                for i in Num:
+                    for j in i:
+                        lista.append(j)
+
+                if len(habitacion) != 0: 
+                    a = True
+                    for j in range(0, len(fecha_entrada)):
+                        if ((datetime.strptime(entrada, '%Y-%m-%d')>=datetime.strptime(fecha_entrada[j][0], '%Y-%m-%d') and datetime.strptime(entrada, '%Y-%m-%d')<datetime.strptime(fecha_salida[j][0], '%Y-%m-%d')) or (datetime.strptime(salida, '%Y-%m-%d')>datetime.strptime(fecha_entrada[j][0], '%Y-%m-%d') and datetime.strptime(salida, '%Y-%m-%d')<=datetime.strptime(fecha_salida[j][0], '%Y-%m-%d'))): 
+                            a = False
+                    for i in range(0, len(habitacion)):
+                        if (habitacion[i][0] not in lista or (a==True)):   
+                            print("Este")
+                            query3 = "INSERT INTO Reservas VALUES ({n},{c},'{e}','{s}','{co}')".format(n=habitacion[i][0], c=user_data[0][3], e=entrada, s=salida, co=session['user'])       
+                            cursor.execute(query3)
+                            sqlconnection.commit()
+                            flash("Reseva exitosa")
+                            
+                        else:
+                            flash("Para la fecha seleccionada no hay habitaciones disponiles")
+                        
+                else:
+                        flash("No hay habitaciones disponibles")
+                        return redirect('/inicio')
+                        
+        else:
+            return "No tiene permisos para acceder a la página"
+
+    except:
+        flash("¡Ocurrió un error al momento de actualizar la página")
+        return redirect('/lista-habitaciones')
+
+
+@app.route('/mis-reservas/reserva', methods=['POST', 'GET'])
+def reservas():
+    try:
+        if 'user' in session:
+            sqlconnection = sqlite3.Connection("Rose.db")
+            cursor = sqlconnection.cursor()
+            query1 = "SELECT * FROM User WHERE Correo='{c}'".format(c=session['user'])
+            cursor.execute(query1)
+            user_data = cursor.fetchall()
+        if request.method == 'POST':
+            Correo = request.form["reserv"]
+            cedula = request.form["ced"]
+            print(user_data)
+            if user_data[0][9] == "user":
+                sqlconnection = sqlite3.Connection("Rose.db")
+                cursor = sqlconnection.cursor()
+                query2 = "SELECT * FROM Reservas WHERE Correo='{c}' and Correo='{co}' and Cedula = {ce}".format(c=session['user'],co=Correo,ce=cedula)
+                cursor.execute(query2)
+                data = cursor.fetchall()
+            if user_data[0][9] == "superadmin" or user_data[0][9] =="admin":
+                sqlconnection = sqlite3.Connection("Rose.db")
+                cursor = sqlconnection.cursor()
+                query2 = "SELECT * FROM Reservas WHERE Correo={n} and Cedula = {ce}".format(n=Correo, ce=cedula)
+                cursor.execute(query2)
+                data = cursor.fetchone()
+            if data:
+                print(data)
+                return render_template('info_Reserva.html', users=user_data , data=data)
+            else:
+                flash("No hay reserva asignada o los datos ingresados son erroneos","alert")
+                return redirect('/mis-reservas')
+        else:
+            return "No tiene permisos para acceder a la página"
+    except:
+        flash("¡Ocurrió un error al momento de actualizar la página")
+        return redirect('/mis-reservas')
+
+
+@app.route('/update-reserva/<string:ced>/<string:Num>', methods=['POST'])
+def update_reservas(ced, Num):
+    try:
+        if 'user' in session:
+            if request.method == 'POST':
+                N_habitacion = request.form["room"]
+                cedula = request.form["cedula"]
+                correo = request.form["correo"]
+                Fecha_entrada = request.form["Ingreso"]
+                Fecha_salida = request.form["Salida"]
+                sqlconnection = sqlite3.Connection("Rose.db")
+                cursor = sqlconnection.cursor()
+                query2 = "UPDATE Reservas SET Numero = {n}, Cedula = {c}, Fecha_entrada = '{fe}', Fecha_salida = '{fs}', correo = '{co}' WHERE Cedula = {Ce} and Numero = {Num}".format(n=N_habitacion, c=cedula, fe=Fecha_entrada, fs= Fecha_salida, co=correo, Ce=ced, Num=Num)
+                cursor.execute(query2)
+                sqlconnection.commit()
+                flash("Se actualizo la reserva")
+                return redirect('/mis-reservas')
+
+        else:
+            return "No tiene permisos para acceder a la página"
+    except:
+        flash("¡Ocurrió un error al momento de actualizar la página")
+        return redirect('/mis-reservas')
+
+@app.route('/delete-reserva/<string:ced>/<string:Num>')
+def delete_reservas(ced, Num):
+    if 'user' in session:
+        sqlconnection = sqlite3.Connection("Rose.db")
+        cursor = sqlconnection.cursor()
+        query2 = "DELETE FROM Reservas WHERE Cedula = {Ce} and Numero = {Num}".format(Ce=ced, Num=Num)
+        cursor.execute(query2)
+        sqlconnection.commit()
+        flash("Se elimino el registro")
+        return redirect('/mis-reservas')
+
+    else:
+        return "No tiene permisos para acceder a la página"
+    
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
