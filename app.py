@@ -444,13 +444,13 @@ def perfil():
                 cursor.execute(query2)
                 sqlconnection.commit()
                 flash("!Usuario editado con éxito")
-                return redirect('/inicio')
+                return redirect('/perfil')
             except:
                 flash("¡Error! !Los campos Cédula, Edad y Teléfono deben ser numéricos")
-                return redirect('/inicio')
+                return redirect('/perfil')
         except:
             flash("¡Error al momento de actualizar el usuario")
-            return redirect('/inicio') 
+            return redirect('/perfil') 
 
     else:
         return "No tiene permisos para acceder a la página"
