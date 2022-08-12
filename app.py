@@ -1,5 +1,4 @@
 from http.client import BAD_REQUEST
-from msilib.schema import Error
 from queue import Empty
 from flask import Flask, render_template, redirect, request, flash, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -629,10 +628,10 @@ def reservar1():
                             cursor.execute(query3)
                             sqlconnection.commit()
                             flash("Reseva exitosa")
-                            
+                            return redirect('/lista-habitaciones')
                         else:
                             flash("Para la fecha seleccionada no hay habitaciones disponiles")
-                        
+                            return redirect('/lista-habitaciones')
                 else:
                         flash("No hay habitaciones disponibles")
                         return redirect('/inicio')
