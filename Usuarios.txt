@@ -1,0 +1,19 @@
+#Usuarios para testear el sistema
+
+Superadmin:
+usuario: cell@gmail
+contraseña: 12345
+
+admin:
+usuario: andres@gmail
+contraseña: 12345
+
+usuario: angie@gmail.com
+contraseña: 12345
+
+usuario final:
+usuario: pepe@gmail.com		
+contraseña: 12345
+
+usuario: z
+contraseña: zas

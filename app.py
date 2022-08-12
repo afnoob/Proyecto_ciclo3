@@ -237,7 +237,7 @@ def actualizar_usuario(id):
                 query2 = "UPDATE User SET Nombre = '{n}', Apellido = '{a}', Cedula = {c}, Edad = {e}, Ciudad = '{ci}', Telefono ={t}, Permiso='{per}' WHERE id = {i}".format(n=nombre, a=apellido, c=cedula, e=edad, ci=ciudad, t=telefono, per=permisos, i=id)
                 cursor.execute(query2)
                 sqlconnection.commit()
-                query3 = "UPDATE Reservas SET Cedula = '{ce}' WHERE id = {i}".format(ce=cedula,)
+                query3 = "UPDATE Reservas SET Cedula = '{ce}' WHERE Correo = '{i}'".format(ce=cedula,i=session['user'])
                 cursor.execute(query3)
                 sqlconnection.commit()
 
