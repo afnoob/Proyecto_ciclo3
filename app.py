@@ -1,5 +1,4 @@
 from http.client import BAD_REQUEST
-from queue import Empty
 from flask import Flask, render_template, redirect, request, flash, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 import os, sqlite3
@@ -623,14 +622,10 @@ def reservar1():
                             a = False
                     for i in range(0, len(habitacion)):
                         if (habitacion[i][0] not in lista or (a==True)):   
-                            print("Este")
                             query3 = "INSERT INTO Reservas VALUES ({n},{c},'{e}','{s}','{co}')".format(n=habitacion[i][0], c=user_data[0][3], e=entrada, s=salida, co=session['user'])       
                             cursor.execute(query3)
                             sqlconnection.commit()
-                            flash("Reseva exitosa")
-                            return redirect('/lista-habitaciones')
-                        else:
-                            flash("Para la fecha seleccionada no hay habitaciones disponiles")
+                            flash(f"Reseva exitosa! habitacion {habitacion[i][0]} reservada con exito")
                             return redirect('/lista-habitaciones')
                 else:
                         flash("No hay habitaciones disponibles")
@@ -654,23 +649,21 @@ def reservas():
             cursor.execute(query1)
             user_data = cursor.fetchall()
         if request.method == 'POST':
-            Correo = request.form["reserv"]
+            N_habitacion = request.form["reserv"]
             cedula = request.form["ced"]
-            print(user_data)
             if user_data[0][9] == "user":
                 sqlconnection = sqlite3.Connection("Rose.db")
                 cursor = sqlconnection.cursor()
-                query2 = "SELECT * FROM Reservas WHERE Correo='{c}' and Correo='{co}' and Cedula = {ce}".format(c=session['user'],co=Correo,ce=cedula)
+                query2 = "SELECT * FROM Reservas WHERE Correo='{c}' and Numero='{n}' and Cedula = {ce}".format(c=session['user'],n=N_habitacion,ce=cedula)
                 cursor.execute(query2)
                 data = cursor.fetchall()
             if user_data[0][9] == "superadmin" or user_data[0][9] =="admin":
                 sqlconnection = sqlite3.Connection("Rose.db")
                 cursor = sqlconnection.cursor()
-                query2 = "SELECT * FROM Reservas WHERE Correo={n} and Cedula = {ce}".format(n=Correo, ce=cedula)
+                query2 = "SELECT * FROM Reservas WHERE Numero={n} and Cedula = {ce}".format(n=N_habitacion, ce=cedula)
                 cursor.execute(query2)
                 data = cursor.fetchone()
             if data:
-                print(data)
                 return render_template('info_Reserva.html', users=user_data , data=data)
             else:
                 flash("No hay reserva asignada o los datos ingresados son erroneos","alert")
